@@ -1,0 +1,33 @@
+{% extends 'home.html' %} {% block content %}
+<div class="container py-5" style="margin-top: 80px;">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb" style="display: flex; list-style: none; gap: 10px;">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" style="color: #c9a227; text-decoration: none; font-weight: bold;">Home</a></li>
+            <li class="breadcrumb-item active" style="color: #666;">/ {{ machine.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="card bg-white border-0 shadow-lg mb-5 overflow-hidden rounded-4" style="display: flex; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <div style="flex: 1; min-height: 400px;">
+            {% if machine.image %}
+                <img src="{{ machine.image.url }}" alt="{{ machine.title }}" style="width: 100%; h-100%; object-fit: cover;">
+            {% else %}
+                <img src="https://placehold.co/600x600?text=No+Image" style="width: 100%; h-100%; object-fit: cover;">
+            {% endif %}
+        </div>
+
+        <div style="flex: 2; padding: 40px;">
+            <h5 style="color: #c9a227; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">Premium Machine</h5>
+            <h1 style="font-size: 3rem; color: #1a1a1a; margin-bottom: 10px;">{{ machine.title }}</h1>
+            <p style="color: #666; font-size: 1.2rem; margin-bottom: 30px;">{{ machine.description }}</p>
+            
+            <div style="display: flex; gap: 20px;">
+                <a href="https://wa.me/919999639638?text=I am interested in {{ machine.title }}" 
+                   style="background: #25d366; color: #fff; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">
+                   WhatsApp Inquiry
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
