@@ -1,0 +1,13 @@
+{
+    "builds": [{
+        "src": "royal_khan/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb" }
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "royal_khan/wsgi.py"
+        }
+    ]
+}
