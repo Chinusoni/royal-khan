@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Royal Khan - Packaging Solutions</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="hero-machine.jpg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -119,7 +120,7 @@
             
             <div class="relative z-10 lg:ml-auto w-full">
                 <div class="bg-gray-800 rounded-xl border border-gray-700 shadow-2xl overflow-hidden aspect-[4/3] flex items-end relative group">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Industrial Packaging Machinery" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+                  <img src="{% static 'images/band-sealer.jpg' %}" alt="Industrial Packaging Machinery" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-rkDark via-rkDark/40 to-transparent"></div>
                     <div class="relative p-8 w-full">
                         <h3 class="text-xl font-heading text-white font-bold">Premium Stainless Steel</h3>
@@ -164,44 +165,53 @@
     </section>
 
     <section class="py-20 px-6 bg-rkDark text-white border-y-[8px] border-rkGold">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <div class="order-2 lg:order-1 bg-white rounded-xl p-8 text-center text-rkDark shadow-2xl transform lg:scale-105">
-                <div class="w-full aspect-square bg-gray-100 rounded-lg mb-6 overflow-hidden border border-gray-200">
-                    <img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Heavy Duty Band Sealer" class="w-full h-full object-cover">
-                </div>
-                <h3 class="text-3xl font-bold font-heading text-rkDark">₹36,500/- <span class="text-lg text-gray-500 font-normal">+ GST</span></h3>
-                <button class="mt-6 w-full bg-rkGold hover:bg-rkGoldDark text-white py-3 rounded font-bold transition">Get Quote Now</button>
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- LEFT: Product Card -->
+        <div class="order-2 lg:order-1 bg-white rounded-xl p-6 text-center text-rkDark shadow-2xl max-w-sm mx-auto w-full">
+            <div class="w-full aspect-square bg-gray-100 rounded-lg mb-6 overflow-hidden border border-gray-200 relative">
+                <img src="{% static 'images/one.jpg' %}" 
+                     alt="Heavy Duty Band Sealer" 
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
             </div>
-            
-            <div class="order-1 lg:order-2 space-y-6">
-                <span class="bg-rkGold text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Featured Product</span>
-                <h2 class="text-4xl lg:text-5xl font-bold font-heading">Continuous Band Sealer</h2>
-                <h3 class="text-2xl text-gray-300 font-heading">Heavy Duty Stainless Steel</h3>
-                
-                <p class="text-gray-400 text-lg leading-relaxed">
-                    Our premium continuous band sealer is designed for heavy-duty industrial use. With its stainless steel construction and precise temperature control, it delivers consistent sealing performance for all types of pouches including plastic, laminated, and aluminum foil.
-                </p>
-                
-                <div class="grid grid-cols-2 gap-x-8 gap-y-4 pt-6 border-t border-gray-700">
-                    <div><span class="text-rkGold block text-sm">Sealing Width</span> <span class="font-semibold">5-10 mm</span></div>
-                    <div><span class="text-rkGold block text-sm">Sealing Speed</span> <span class="font-semibold">0-12/min</span></div>
-                    <div><span class="text-rkGold block text-sm">Temperature</span> <span class="font-semibold">0-300°C</span></div>
-                    <div><span class="text-rkGold block text-sm">Capacity</span> <span class="font-semibold">Up to 3 Kg</span></div>
-                    <div><span class="text-rkGold block text-sm">Power</span> <span class="font-semibold">650W-750W</span></div>
-                </div>
-
-                <ul class="pt-6 space-y-2 text-sm text-gray-300">
-                    <li class="flex items-center gap-2">✔️ Stainless Steel Body Construction</li>
-                    <li class="flex items-center gap-2">✔️ Adjustable Temperature Control</li>
-                    <li class="flex items-center gap-2">✔️ Variable Speed Conveyor</li>
-                    <li class="flex items-center gap-2">✔️ Suitable for All Pouch Types</li>
-                    <li class="flex items-center gap-2">✔️ Low Power Consumption</li>
-                    <li class="flex items-center gap-2">✔️ Easy to Operate & Maintain</li>
-                </ul>
-            </div>
+            <h3 class="text-2xl font-bold font-heading text-rkDark">
+                ₹36,500/- <span class="text-base text-gray-500 font-normal">+ GST</span>
+            </h3>
+            <button class="mt-4 w-full bg-rkGold hover:bg-rkGoldDark text-white py-3 rounded font-bold transition">
+                Get Quote Now
+            </button>
         </div>
-    </section>
 
+        <!-- RIGHT: Product Info -->
+        <div class="order-1 lg:order-2 space-y-6">
+            <span class="bg-rkGold text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Featured Product</span>
+            <h2 class="text-4xl lg:text-5xl font-bold font-heading">Continuous Band Sealer</h2>
+            <h3 class="text-2xl text-gray-300 font-heading">Heavy Duty Stainless Steel</h3>
+            
+            <p class="text-gray-400 text-lg leading-relaxed">
+                Our premium continuous band sealer is designed for heavy-duty industrial use. With its stainless steel construction and precise temperature control, it delivers consistent sealing performance for all types of pouches including plastic, laminated, and aluminum foil.
+            </p>
+            
+            <div class="grid grid-cols-2 gap-x-8 gap-y-4 pt-6 border-t border-gray-700">
+                <div><span class="text-rkGold block text-sm">Sealing Width</span><span class="font-semibold">5-10 mm</span></div>
+                <div><span class="text-rkGold block text-sm">Sealing Speed</span><span class="font-semibold">0-12/min</span></div>
+                <div><span class="text-rkGold block text-sm">Temperature</span><span class="font-semibold">0-300°C</span></div>
+                <div><span class="text-rkGold block text-sm">Capacity</span><span class="font-semibold">Up to 3 Kg</span></div>
+                <div><span class="text-rkGold block text-sm">Power</span><span class="font-semibold">650W-750W</span></div>
+            </div>
+
+            <ul class="pt-6 space-y-2 text-sm text-gray-300">
+                <li class="flex items-center gap-2">✔️ Stainless Steel Body Construction</li>
+                <li class="flex items-center gap-2">✔️ Adjustable Temperature Control</li>
+                <li class="flex items-center gap-2">✔️ Variable Speed Conveyor</li>
+                <li class="flex items-center gap-2">✔️ Suitable for All Pouch Types</li>
+                <li class="flex items-center gap-2">✔️ Low Power Consumption</li>
+                <li class="flex items-center gap-2">✔️ Easy to Operate & Maintain</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
     <section id="products" class="py-20 px-6 bg-rkLight">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
@@ -218,7 +228,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow group flex flex-col">
                     <div class="h-48 overflow-hidden bg-gray-100 border-b relative">
-                        <img src="https://images.unsplash.com/photo-1580983218765-f663bc079635?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Economy Band Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src={% static "images/download1.jpg"%} alt="Economy Band Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <span class="text-xs font-bold text-rkGold uppercase mb-2">Band Sealer Machine</span>
@@ -232,7 +242,7 @@
 
                 <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow group flex flex-col">
                     <div class="h-48 overflow-hidden bg-gray-100 border-b relative">
-                        <img src="https://images.unsplash.com/photo-1611342799913-ac05db114d18?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Standard Band Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src={% static "images/shopping.jpg"%} alt="Standard Band Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <span class="text-xs font-bold text-rkGold uppercase mb-2">Band Sealer Machine</span>
@@ -246,7 +256,7 @@
 
                 <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow group flex flex-col">
                     <div class="h-48 overflow-hidden bg-gray-100 border-b relative">
-                        <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Heavy Duty Cap Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src={% static "images/sh.jpg"%} alt="Heavy Duty Cap Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <span class="text-xs font-bold text-rkGold uppercase mb-2">Cap Sealing Machine</span>
@@ -260,7 +270,7 @@
 
                 <div class="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition-shadow group flex flex-col">
                     <div class="h-48 overflow-hidden bg-gray-100 border-b relative">
-                        <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Premium Band Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <img src={% static "images/sh1.jpg"%} alt="Premium Band Sealer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
                         <span class="text-xs font-bold text-rkGold uppercase mb-2">Band Sealer Machine</span>
