@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'royal_khan.wsgi.application'
 
 
 # Grab the URL if it exists (it will on Vercel, but won't on your laptop)
-LIVE_DB_URL = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL')
+LIVE_DB_URL = "postgresql://neondb_owner:npg_ACQFZk4UbuJ3@ep-quiet-poetry-am11dyq2-pooler.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require"
 
 if LIVE_DB_URL:
     # We are on Vercel! Use the Neon PostgreSQL database.
