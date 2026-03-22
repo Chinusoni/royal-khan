@@ -20,3 +20,6 @@ def all_products(request):
     products = Product.objects.all().order_by('-created_at')
     # Change it here to match your file name exactly
     return render(request, 'all_product.html', {'products': products})
+
+def about(request):
+    return render(request, 'about.html')
