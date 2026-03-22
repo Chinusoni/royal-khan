@@ -83,14 +83,26 @@ WSGI_APPLICATION = 'royal_khan.wsgi.application'
 
 
 
-DATABASES = {
-    'default': dj_database_url.config(
-        # This safely checks for whichever variable Vercel decided to use
-        default=os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+# Grab the URL if it exists (it will on Vercel, but won't on your laptop)
+LIVE_DB_URL = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL')
+
+if LIVE_DB_URL:
+    # We are on Vercel! Use the Neon PostgreSQL database.
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=LIVE_DB_URL,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+else:
+    # We are on your laptop! Use the local SQLite database.
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
