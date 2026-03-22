@@ -1,24 +1,22 @@
-from django.shortcuts import render
-from .models import Project 
 from django.shortcuts import render, get_object_or_404
-
+from .models import Product
 
 def home(request):
-    # Grab all projects from the database
-    projects = Project.objects.all() 
-    
-    # Pass them into the 'context' dictionary
-    context = {'projects': projects}
-    return render(request, 'home.html', context)
+    return render(request, 'home.html')
 
-
-def machine_detail(request, pk):
-    # This finds the machine by its ID (pk) or shows a 404 error
-    machine = get_object_or_404(Project, pk=pk)
-    return render(request, 'machine_detail.html', {'machine': machine})
+# Add this function
+def machine_info(request):
+    return render(request, 'machine_detail.html')
 
 def all_products(request):
-    # Change 'Product' to 'Project'
-    products = Project.objects.all() 
-    context = {'projects': products}
-    return render(request, 'home.html', context) # or your listing page
+    products = Product.objects.all().order_by('-created_at')
+    return render(request, 'all_products.html', {'products': products})
+
+def machine_detail(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'machine_detail.html', {'product': product})
+
+def all_products(request):
+    products = Product.objects.all().order_by('-created_at')
+    # Change it here to match your file name exactly
+    return render(request, 'all_product.html', {'products': products})

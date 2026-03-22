@@ -1,11 +1,19 @@
 from django.db import models
 
-class Project(models.Model):
+class Product(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    # Add this line for the photo
-    image = models.ImageField(upload_to='project_images/', null=True, blank=True)
-    # Add this for a slider toggle
+    
+    # Existing main image
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    
+    # NEW: Extra images
+    image2 = models.ImageField(upload_to='products/', blank=True, null=True)
+    image3 = models.ImageField(upload_to='products/', blank=True, null=True)
+    
+    # NEW: Video link (e.g., YouTube)
+    video_url = models.URLField(blank=True, null=True, help_text="Paste YouTube embed URL here")
+    
     is_featured = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 

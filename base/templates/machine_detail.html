@@ -1,33 +1,125 @@
-{% extends 'home.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 <div class="container py-5" style="margin-top: 80px;">
+    
     <nav aria-label="breadcrumb" class="mb-4">
-        <ol class="breadcrumb" style="display: flex; list-style: none; gap: 10px;">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}" style="color: #c9a227; text-decoration: none; font-weight: bold;">Home</a></li>
-            <li class="breadcrumb-item active" style="color: #666;">/ {{ machine.title }}</li>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-decoration-none text-muted">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'all_products' %}" class="text-decoration-none text-muted">Products</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
         </ol>
     </nav>
 
-    <div class="card bg-white border-0 shadow-lg mb-5 overflow-hidden rounded-4" style="display: flex; background: #fff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-        <div style="flex: 1; min-height: 400px;">
-            {% if machine.image %}
-                <img src="{{ machine.image.url }}" alt="{{ machine.title }}" style="width: 100%; h-100%; object-fit: cover;">
-            {% else %}
-                <img src="https://placehold.co/600x600?text=No+Image" style="width: 100%; h-100%; object-fit: cover;">
-            {% endif %}
+    <div class="row gx-lg-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden bg-white">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}" class="img-fluid w-100" style="object-fit: cover; max-height: 500px;">
+                {% else %}
+                    <div class="bg-light d-flex flex-column align-items-center justify-content-center text-muted" style="height: 400px;">
+                        <i class="fas fa-image fa-4x mb-3 opacity-50"></i>
+                        <span>No image available</span>
+                    </div>
+                {% endif %}
+            </div>
         </div>
 
-        <div style="flex: 2; padding: 40px;">
-            <h5 style="color: #c9a227; text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">Premium Machine</h5>
-            <h1 style="font-size: 3rem; color: #1a1a1a; margin-bottom: 10px;">{{ machine.title }}</h1>
-            <p style="color: #666; font-size: 1.2rem; margin-bottom: 30px;">{{ machine.description }}</p>
+        <div class="col-md-6 d-flex flex-column justify-content-center">
             
-            <div style="display: flex; gap: 20px;">
-                <a href="https://wa.me/919999639638?text=I am interested in {{ machine.title }}" 
-                   style="background: #25d366; color: #fff; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold;">
-                   WhatsApp Inquiry
+            {% if product.is_featured %}
+                <div>
+                    <span class="badge px-3 py-2 rounded-pill shadow-sm mb-3" style="background-color: #D4AF37; font-size: 0.8rem;">
+                        <i class="fas fa-star me-1"></i> Featured Machine
+                    </span>
+                </div>
+            {% endif %}
+
+            <h1 class="display-5 fw-bold text-dark mb-3" style="font-family: 'Playfair Display', serif;">
+                {{ product.title }}
+            </h1>
+            
+            <p class="text-muted small mb-4">
+                <i class="fas fa-calendar-alt text-warning me-1"></i> Added to catalog: {{ product.created_at|date:"F j, Y" }}
+            </p>
+
+            <div class="mb-5">
+                <h5 class="fw-bold text-dark mb-3">Machine Specifications & Details</h5>
+                <p class="text-muted" style="line-height: 1.8;">
+                    {{ product.description|linebreaks }}
+                </p>
+            </div>
+
+            <div class="d-grid gap-3 d-md-flex justify-content-md-start mt-auto pt-4 border-top">
+                <a href="https://wa.me/919310255780?text=Hi%20Royal%20Khan,%20I%20am%20interested%20in%20getting%20a%20quote%20for%20the%20{{ product.title|urlencode }}" 
+                   target="_blank" 
+                   class="btn btn-lg rounded-pill fw-bold px-5 shadow-sm" 
+                   style="background-color: #D4AF37; color: white; border: none;">
+                    <i class="fab fa-whatsapp me-2"></i> Get a Quote
+                </a>
+                
+                <a href="{% url 'all_products' %}" class="btn btn-outline-dark btn-lg rounded-pill fw-bold px-5">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Catalog
                 </a>
             </div>
+
         </div>
     </div>
 </div>
+
+<div class="col-md-6 mb-4 mb-md-0">
+            
+            <div id="productCarousel" class="carousel slide card border-0 shadow-sm rounded-4 overflow-hidden mb-4" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="d-block w-100" style="object-fit: cover; height: 450px;" alt="Main Image">
+                        {% else %}
+                            <div class="bg-light d-flex flex-column align-items-center justify-content-center text-muted" style="height: 450px;">
+                                <i class="fas fa-image fa-4x mb-3 opacity-50"></i>
+                                <span>No main image</span>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    {% if product.image2 %}
+                    <div class="carousel-item">
+                        <img src="{{ product.image2.url }}" class="d-block w-100" style="object-fit: cover; height: 450px;" alt="Angle 2">
+                    </div>
+                    {% endif %}
+                    
+                    {% if product.image3 %}
+                    <div class="carousel-item">
+                        <img src="{{ product.image3.url }}" class="d-block w-100" style="object-fit: cover; height: 450px;" alt="Angle 3">
+                    </div>
+                    {% endif %}
+                </div>
+
+                {% if product.image2 or product.image3 %}
+                <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                </button>
+                {% endif %}
+            </div>
+
+            {% if product.video_url %}
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mt-4 p-2 bg-white">
+                <h6 class="fw-bold px-2 pt-2"><i class="fab fa-youtube text-danger me-2"></i>Machine in Action</h6>
+                <div class="ratio ratio-16x9 rounded-3 overflow-hidden mt-2">
+                   <iframe src="{{ product.embed_video_url }}" title="Machine Video" allowfullscreen></iframe>
+            </div>
+            {% endif %}
+
+        </div>
+
+<style>
+    body { background-color: #faf8f5; }
+    .btn:hover { transform: translateY(-2px); transition: transform 0.2s ease; }
+</style>
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.contrib import admin
-from .models import Project
+from .models import Product # Import your model
 
-admin.site.register(Project)
+# This line is what makes it appear in the sidebar
+admin.site.register(Product)
