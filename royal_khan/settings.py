@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 
@@ -176,3 +179,19 @@ else:
             "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
         },
     }
+    
+    cloudinary.config(
+    cloud_name="YOUR_CLOUD_NAME",  # Replace with your actual cloud name
+    api_key="733864248744241",
+    api_secret="BqVfhidzclIGwXzX2V5plvkqdd8"
+)
+
+# Force Django to use Cloudinary for all media files
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
