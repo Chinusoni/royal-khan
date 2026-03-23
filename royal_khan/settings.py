@@ -180,13 +180,14 @@ else:
         },
     }
     
-    cloudinary.config(
-    cloud_name="YOUR_CLOUD_NAME",  # Replace with your actual cloud name
-    api_key="733864248744241",
-    api_secret="BqVfhidzclIGwXzX2V5plvkqdd8"
-)
+    # The exact dictionary the Cloudinary package is looking for:
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'YOUR_CLOUD_NAME',  # <-- Replace with your real cloud name
+    'API_KEY': '733864248744241',
+    'API_SECRET': 'BqVfhidzclIGwXzX2V5plvkqdd8',
+}
 
-# Force Django to use Cloudinary for all media files
+# Keep this part exactly the same:
 STORAGES = {
     "default": {
         "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
