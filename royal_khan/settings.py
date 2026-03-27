@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'base',
-    'cloudinary_storage',
     'cloudinary',
 ]
 
@@ -182,7 +182,7 @@ else:
     
     # The exact dictionary the Cloudinary package is looking for:
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'YOUR_CLOUD_NAME',  # <-- Replace with your real cloud name
+    'CLOUD_NAME': 'dflb56gt2',  # <-- Replace with your real cloud name
     'API_KEY': '733864248744241',
     'API_SECRET': 'BqVfhidzclIGwXzX2V5plvkqdd8',
 }
