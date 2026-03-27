@@ -4,6 +4,26 @@
 {% block content %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+<style>
+    body { background-color: #faf8f5; }
+    .product-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .product-card:hover { transform: translateY(-10px); box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important; }
+    /* This ensures the image box stays the same size but the machine fits inside */
+    .img-container {
+        height: 280px; 
+        background-color: #f8f9fa; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+    }
+    .product-img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain; /* Prevents cropping the machine */
+    }
+</style>
+
 <div class="container py-5" style="margin-top: 80px;">
     <div class="text-center mb-5">
         <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px; font-size: 0.9rem;">Our Collection</span>
@@ -11,9 +31,11 @@
         <p class="text-muted fs-5">Industrial-grade packaging machines built for precision and scale.</p>
     </div>
 
-    <p class="text-muted mb-4">
-        Showing <span id="count-num" class="fw-bold text-dark">{{ products.count }}</span> product{{ products.count|pluralize }}
-    </p>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <p class="text-muted mb-0">
+            Showing <span id="count-num" class="fw-bold text-dark">{{ products.count }}</span> product{{ products.count|pluralize }}
+        </p>
+        </div>
 
     {% if products %}
     <div class="row g-4" id="product-grid">
@@ -21,24 +43,26 @@
         <div class="col-md-6 col-lg-4 col-xl-3 product-item" data-name="{{ product.title|lower }}">
             <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden bg-white product-card">
                 
-               <div class="position-relative overflow-hidden" style="height: 220px;">
-    {% if product.image %}
-        <img src="{{ product.image.url }}" alt="{{ product.title }}" class="w-100 h-100 product-img" style="object-fit: cover;">
-    {% else %}
-        <div class="w-100 h-100 d-flex flex-column align-items-center justify-content-center bg-light text-muted">
-            <i class="fas fa-box fa-3x mb-2 opacity-50"></i>
-            <span class="small">No Image Provided</span>
-        </div>
-    {% endif %}
-    </div>
+                <div class="img-container">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-img">
+                    {% else %}
+                        <div class="text-center text-muted">
+                            <i class="fas fa-industry fa-3x mb-2 opacity-25"></i>
+                            <br><span class="small">Image Coming Soon</span>
+                        </div>
+                    {% endif %}
+                </div>
 
                 <div class="card-body p-4 d-flex flex-column">
-                    <h5 class="fw-bold text-dark mb-2">{{ product.title }}</h5>
-                    <p class="text-muted small mb-3">{{ product.description }}</p>
+                    <h5 class="fw-bold text-dark mb-2 text-truncate">{{ product.title }}</h5>
+                    <p class="text-muted small mb-3" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        {{ product.description }}
+                    </p>
                     
-                    <div class="mt-auto pt-3 border-top d-flex gap-2">
-                        <a href="{% url 'machine_detail' product.pk %}" class="btn btn-outline-dark btn-sm rounded-pill flex-fill fw-bold">
-                            View
+                    <div class="mt-auto pt-3 border-top">
+                        <a href="{% url 'machine_detail' product.pk %}" class="btn btn-dark w-100 rounded-pill fw-bold">
+                            View Specifications
                         </a>
                     </div>
                 </div>
@@ -49,8 +73,14 @@
     {% else %}
     <div class="col-12 text-center py-5">
         <div class="card border-0 bg-white py-5 rounded-4 shadow-sm">
-            <h3 class="text-dark">No products yet</h3>
-            <a href="/admin/" class="btn btn-warning rounded-pill mt-3 px-4 fw-bold">Go to Admin Panel</a>
+            <i class="fas fa-box-open fa-4x text-warning mb-3 opacity-50"></i>
+            <h3 class="text-dark">No products in catalog</h3>
+            <p class="text-muted">Start by adding your industrial machinery in the admin panel.</p>
+            <div class="d-flex justify-content-center">
+                <a href="/admin/" class="btn btn-warning rounded-pill mt-2 px-5 fw-bold text-white shadow-sm">
+                    Open Admin Panel
+                </a>
+            </div>
         </div>
     </div>
     {% endif %}
