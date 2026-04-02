@@ -177,8 +177,8 @@
         .ihs-content {
             position: absolute; inset: 0; z-index: 2;
             display: flex; align-items: center;
-            /* Responsive padding */
-            padding: 0 5vw;
+            /* Left padding must clear the arrow button (38px) + gap */
+            padding: 0 16px 0 62px;
         }
         @media (min-width: 768px) { .ihs-content { padding: 0 7vw; } }
 
