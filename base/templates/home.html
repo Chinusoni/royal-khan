@@ -17,12 +17,12 @@
                 extend: {
                     colors: {
                         rkWhite: '#ffffff',
-                        rkBgSoft: '#f8fafc',    // Slate 50 (for alternate sections)
-                        rkBlue: '#0284c7',      // Sky 600 (Primary Blue)
-                        rkBlueLight: '#38bdf8', // Sky 400
-                        rkBlueDark: '#0f172a',  // Slate 900 (Footer & ultra-dark accents)
-                        rkTextDark: '#1e293b',  // Slate 800 (Main text)
-                        rkTextLight: '#64748b', // Slate 500 (Muted text)
+                        rkBgSoft: '#f8fafc',
+                        rkBlue: '#0284c7',
+                        rkBlueLight: '#38bdf8',
+                        rkBlueDark: '#0f172a',
+                        rkTextDark: '#1e293b',
+                        rkTextLight: '#64748b',
                     },
                     fontFamily: {
                         display: ['Bebas Neue', 'sans-serif'],
@@ -39,15 +39,12 @@
         body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: #1e293b; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
 
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #0284c7; border-radius: 3px; }
 
-        /* Blue texture line */
         .blue-rule { height: 2px; background: linear-gradient(90deg, transparent, #0284c7 30%, #38bdf8 50%, #0284c7 70%, transparent); }
 
-        /* Noise overlay */
         .noise::after {
             content: '';
             position: absolute; inset: 0;
@@ -55,7 +52,6 @@
             pointer-events: none; opacity: 0.2; mix-blend-mode: multiply; z-index: 1;
         }
 
-        /* Animated gradient bg */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -67,15 +63,11 @@
             animation: gradientShift 12s ease infinite;
         }
 
-        /* Slide-in animations */
         @keyframes fadeUp {
             from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideLeft {
             from { opacity: 0; transform: translateX(60px); }
             to { opacity: 1; transform: translateX(0); }
@@ -88,59 +80,49 @@
         .delay-3 { animation-delay: 0.45s; }
         .delay-4 { animation-delay: 0.6s; }
 
-        /* Product card hover */
         .product-card { transition: transform 0.4s cubic-bezier(.22,1,.36,1), box-shadow 0.4s ease; }
         .product-card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(2,132,199,0.12); }
         .product-card .card-img img { transition: transform 0.7s cubic-bezier(.22,1,.36,1); }
         .product-card:hover .card-img img { transform: scale(1.08); }
 
-        /* Nav underline */
         .nav-link { position: relative; }
         .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #0284c7; transition: width 0.3s ease; }
         .nav-link:hover::after { width: 100%; }
 
-        /* Blue border glow */
         .blue-glow { box-shadow: 0 0 0 1px rgba(2,132,199,0.2), 0 20px 60px rgba(2,132,199,0.1); }
 
-        /* Stats counter */
         .stat-num { font-family: 'Bebas Neue', sans-serif; line-height: 1; }
 
-        /* Marquee */
         @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .marquee-track { animation: marquee 20s linear infinite; display: flex; width: max-content; }
         .marquee-track:hover { animation-play-state: paused; }
 
-        /* Section divider diamond */
         .diamond-divider { display: flex; align-items: center; gap: 16px; }
         .diamond-divider::before, .diamond-divider::after { content: ''; flex: 1; height: 1px; background: rgba(2,132,199,0.2); }
         .diamond-divider span { width: 8px; height: 8px; background: #0284c7; transform: rotate(45deg); flex-shrink: 0; }
 
-        /* Feature icon circle */
         .feat-icon { width: 56px; height: 56px; border-radius: 50%; background: rgba(2,132,199,0.05); border: 1px solid rgba(2,132,199,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px; transition: all 0.3s; }
         .feat-icon:hover { background: rgba(2,132,199,0.1); transform: scale(1.1); }
 
-        /* Process step line */
         .process-step { position: relative; }
-        .process-step:not(:last-child)::after { content: ''; position: absolute; top: 28px; left: 100%; width: 100%; height: 1px; background: linear-gradient(90deg, rgba(2,132,199,0.3), transparent); z-index: 0; }
+        /* Only show connecting line on desktop */
+        @media (min-width: 768px) {
+            .process-step:not(:last-child)::after { content: ''; position: absolute; top: 28px; left: 100%; width: 100%; height: 1px; background: linear-gradient(90deg, rgba(2,132,199,0.3), transparent); z-index: 0; }
+        }
 
-        /* Testimonial card */
         .testimonial-card { background: #ffffff; border: 1px solid rgba(2,132,199,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
 
-        /* Mobile menu toggle */
         #mobile-menu { display: none; }
         #mobile-menu.open { display: flex; }
 
-        /* Spec table alternating rows */
         .spec-row:nth-child(even) { background: rgba(2,132,199,0.03); }
 
-        /* Subtle grid pattern */
         .grid-pattern {
             background-image: linear-gradient(rgba(2,132,199,0.04) 1px, transparent 1px),
                               linear-gradient(90deg, rgba(2,132,199,0.04) 1px, transparent 1px);
             background-size: 60px 60px;
         }
 
-        /* Button styles */
         .btn-blue { background: linear-gradient(135deg, #0284c7, #38bdf8); color: #ffffff; font-weight: 700; letter-spacing: 0.05em; transition: all 0.3s; position: relative; overflow: hidden; }
         .btn-blue::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #38bdf8, #0284c7); opacity: 0; transition: opacity 0.3s; }
         .btn-blue:hover::before { opacity: 1; }
@@ -150,126 +132,158 @@
         .btn-outline { border: 1px solid rgba(2,132,199,0.4); color: #0284c7; font-weight: 600; transition: all 0.3s; }
         .btn-outline:hover { background: rgba(2,132,199,0.05); border-color: #0284c7; }
 
-        /* Scroll indicator */
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
         .scroll-indicator { animation: bounce 2s ease infinite; }
         .scroll-indicator .w-px { background: linear-gradient(to bottom, #0284c7, transparent); }
 
-        /* Category tabs */
         .cat-tab { cursor: pointer; transition: all 0.3s; border-bottom: 2px solid transparent; }
         .cat-tab.active { color: #0284c7; border-bottom-color: #0284c7; }
 
-        /* --- IMAGE HERO BANNER SLIDER --- */
-.img-hero-slider {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 520px;
-    overflow: hidden;
-    margin-top: 50px; /* Adjust based on your navbar height */
-    background: #0b1623;
-}
+        /* ---- IMAGE HERO BANNER SLIDER ---- */
+        .img-hero-slider {
+            position: relative;
+            width: 100%;
+            /* Mobile: 60vh, Desktop: 100vh */
+            height: 60vh;
+            min-height: 380px;
+            overflow: hidden;
+            /* margin-top matches sticky nav height ~65px on mobile */
+            background: #0b1623;
+        }
+        @media (min-width: 768px) {
+            .img-hero-slider { height: 100vh; min-height: 520px; }
+        }
 
-.ihs-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1.1s cubic-bezier(.4,0,.2,1);
-    z-index: 0;
-}
-.ihs-slide.active { opacity: 1; z-index: 1; }
+        .ihs-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.1s cubic-bezier(.4,0,.2,1); z-index: 0; }
+        .ihs-slide.active { opacity: 1; z-index: 1; }
 
-.ihs-slide-bg {
-    position: absolute;
-    inset: 0;
-    background-size: cover;
-    background-position: center;
-    transform: scale(1.06);
-    transition: transform 6s ease;
-    will-change: transform;
-}
-.ihs-slide.active .ihs-slide-bg { transform: scale(1); }
+        .ihs-slide-bg {
+            position: absolute; inset: 0;
+            background-size: cover;
+            background-position: center;
+            transform: scale(1.06);
+            transition: transform 6s ease;
+            will-change: transform;
+        }
+        .ihs-slide.active .ihs-slide-bg { transform: scale(1); }
 
-/* Overlay for text legibility */
-.ihs-slide::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(105deg, rgba(10,18,35,.82) 0%, rgba(10,18,35,.55) 55%, rgba(10,18,35,.18) 100%);
-    z-index: 1;
-}
+        .ihs-slide::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(105deg, rgba(10,18,35,.82) 0%, rgba(10,18,35,.55) 55%, rgba(10,18,35,.18) 100%);
+            z-index: 1;
+        }
 
-.ihs-content {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    padding: 0 7vw;
-}
-.ihs-text { max-width: 640px; }
+        .ihs-content {
+            position: absolute; inset: 0; z-index: 2;
+            display: flex; align-items: center;
+            /* Responsive padding */
+            padding: 0 5vw;
+        }
+        @media (min-width: 768px) { .ihs-content { padding: 0 7vw; } }
 
-/* Text Animations */
-.ihs-label, .ihs-heading, .ihs-sub, .ihs-actions {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity .6s, transform .6s;
-}
-.ihs-slide.active .ihs-label { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
-.ihs-slide.active .ihs-heading { opacity: 1; transform: translateY(0); transition-delay: 0.42s; }
-.ihs-slide.active .ihs-sub { opacity: 1; transform: translateY(0); transition-delay: 0.54s; }
-.ihs-slide.active .ihs-actions { opacity: 1; transform: translateY(0); transition-delay: 0.66s; }
+        .ihs-text { max-width: 640px; width: 100%; }
 
-.ihs-label { color: #1fb6ff; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.72rem; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-.ihs-label::before { content: ''; width: 28px; height: 2px; background: #1fb6ff; }
-.ihs-heading { color: #fff; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; line-height: 1.08; margin-bottom: 18px; }
-.ihs-heading em { font-style: normal; color: #1fb6ff; }
-.ihs-sub { color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 36px; }
+        .ihs-label, .ihs-heading, .ihs-sub, .ihs-actions {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity .6s, transform .6s;
+        }
+        .ihs-slide.active .ihs-label  { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
+        .ihs-slide.active .ihs-heading { opacity: 1; transform: translateY(0); transition-delay: 0.42s; }
+        .ihs-slide.active .ihs-sub    { opacity: 1; transform: translateY(0); transition-delay: 0.54s; }
+        .ihs-slide.active .ihs-actions { opacity: 1; transform: translateY(0); transition-delay: 0.66s; }
 
-/* Controls */
-.ihs-progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.1); z-index: 10; }
-.ihs-progress-fill { height: 100%; width: 0%; background: #1fb6ff; }
-.ihs-dots { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 10px; }
-.ihs-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.3); border: none; cursor: pointer; transition: 0.3s; }
-.ihs-dot.active { background: #1fb6ff; width: 30px; border-radius: 4px; }
-.ihs-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 46px; height: 46px; border-radius: 50%; background: rgba(255,255,255,.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.18); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-.ihs-arrow:hover { border-color: #1fb6ff; background: rgba(31,182,255,.25); }
-.ihs-arrow-prev { left: 28px; }
-.ihs-arrow-next { right: 28px; }
+        .ihs-label { color: #1fb6ff; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.65rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+        .ihs-label::before { content: ''; width: 20px; height: 2px; background: #1fb6ff; }
+        @media (min-width: 768px) {
+            .ihs-label { font-size: 0.72rem; margin-bottom: 20px; }
+            .ihs-label::before { width: 28px; }
+        }
 
+        .ihs-heading { color: #fff; font-size: clamp(1.8rem, 6vw, 4rem); font-weight: 800; line-height: 1.08; margin-bottom: 12px; }
+        @media (min-width: 768px) { .ihs-heading { margin-bottom: 18px; } }
+        .ihs-heading em { font-style: normal; color: #1fb6ff; }
+
+        .ihs-sub { color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 24px; font-size: 0.9rem; }
+        @media (min-width: 768px) { .ihs-sub { margin-bottom: 36px; font-size: 1rem; } }
+
+        /* Slider controls */
+        .ihs-progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.1); z-index: 10; }
+        .ihs-progress-fill { height: 100%; width: 0%; background: #1fb6ff; }
+
+        .ihs-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 8px; }
+        @media (min-width: 768px) { .ihs-dots { bottom: 32px; gap: 10px; } }
+        .ihs-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,.3); border: none; cursor: pointer; transition: 0.3s; padding: 0; }
+        .ihs-dot.active { background: #1fb6ff; width: 26px; border-radius: 4px; }
+
+        .ihs-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.18); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        @media (min-width: 768px) { .ihs-arrow { width: 46px; height: 46px; } }
+        .ihs-arrow:hover { border-color: #1fb6ff; background: rgba(31,182,255,.25); }
+        .ihs-arrow-prev { left: 12px; }
+        .ihs-arrow-next { right: 12px; }
+        @media (min-width: 768px) { .ihs-arrow-prev { left: 28px; } .ihs-arrow-next { right: 28px; } }
+
+        /* Hero section product card on mobile */
+        @media (max-width: 1023px) {
+            .hero-product-card { display: none; }
+        }
+
+        /* Spec table scroll on small screens */
+        .spec-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+        /* Touch target sizing for buttons */
+        @media (max-width: 767px) {
+            .btn-blue, .btn-outline { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+        }
+
+        /* Industry grid: 2 cols mobile, 3 md, 5 lg */
+        /* already handled in HTML via Tailwind */
+
+        /* Footer newsletter input on mobile */
+        @media (max-width: 480px) {
+            .newsletter-row { flex-direction: column; gap: 8px; }
+            .newsletter-row input { border-radius: 4px; }
+            .newsletter-row button { border-radius: 4px; width: 100%; padding: 10px; }
+        }
+
+        /* WhatsApp FAB — slightly smaller on mobile */
+        @media (max-width: 767px) {
+            .wa-fab { width: 52px !important; height: 52px !important; bottom: 16px !important; right: 16px !important; }
+        }
+
+        /* Scroll-reveal for cards */
     </style>
 </head>
 <body>
 
-
-    
-
-    <div class="bg-rkBlue text-white text-xs py-2 px-6 border-b border-rkBlueLight/30">
+    <!-- Top bar — hidden on very small screens to save space -->
+    <div class="bg-rkBlue text-white text-xs py-2 px-4 border-b border-rkBlueLight/30">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex space-x-6">
+            <div class="flex space-x-4">
                 <a href="tel:+919958131152" class="flex items-center gap-1.5 hover:text-rkBlueLight transition-colors">
-                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
-                    +91-9958131152
+                    <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                    <span>+91-9958131152</span>
                 </a>
                 <a href="mailto:info@royalkhan.com" class="hidden sm:flex items-center gap-1.5 hover:text-rkBlueLight transition-colors">
-                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    <svg class="w-3 h-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
                     info@royalkhan.com
                 </a>
             </div>
-            <div class="hidden sm:flex items-center gap-6 font-medium tracking-widest text-[11px] uppercase">
+            <div class="hidden md:flex items-center gap-6 font-medium tracking-widest text-[11px] uppercase">
                 <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-300 inline-block"></span> GST Registered</span>
                 <span>Free Pan-India Shipping on Bulk Orders</span>
             </div>
         </div>
     </div>
 
-    <nav class="bg-rkWhite/95 backdrop-blur-md text-rkTextDark py-4 px-6 sticky top-0 z-50 border-b border-rkBlue/10 shadow-sm">
+    <!-- Navigation -->
+    <nav class="bg-rkWhite/95 backdrop-blur-md text-rkTextDark py-3 px-4 md:py-4 md:px-6 sticky top-0 z-50 border-b border-rkBlue/10 shadow-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex flex-col">
-                <span class="text-2xl md:text-3xl font-display text-rkBlue tracking-wider leading-none">Royal Khan Company</span>
+                <span class="text-xl md:text-3xl font-display text-rkBlue tracking-wider leading-none">Royal Khan Company</span>
                 <div class="diamond-divider mt-1">
                     <span></span>
-                    <p class="text-[9px] text-rkTextLight tracking-[0.35em] uppercase font-body">Think Packaging Think Us</p>
+                    <p class="text-[8px] md:text-[9px] text-rkTextLight tracking-[0.3em] uppercase font-body">Think Packaging Think Us</p>
                 </div>
             </div>
 
@@ -287,171 +301,170 @@
                 <a href="#contact" class="btn-blue px-6 py-2.5 rounded text-sm"><span>Get a Quote →</span></a>
             </div>
 
-            <button id="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="md:hidden flex flex-col gap-1.5 p-2">
-                <span class="w-6 h-0.5 bg-rkBlue"></span>
-                <span class="w-6 h-0.5 bg-rkBlue"></span>
-                <span class="w-4 h-0.5 bg-rkBlue"></span>
-            </button>
+            <!-- Mobile: WhatsApp icon + hamburger -->
+            <div class="flex items-center gap-3 md:hidden">
+                <a href="https://wa.me/919958131152" class="text-green-600 p-2" aria-label="WhatsApp">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+                <button id="hamburger" onclick="document.getElementById('mobile-menu').classList.toggle('open')" class="flex flex-col gap-1.5 p-2" aria-label="Menu">
+                    <span class="w-6 h-0.5 bg-rkBlue"></span>
+                    <span class="w-6 h-0.5 bg-rkBlue"></span>
+                    <span class="w-4 h-0.5 bg-rkBlue"></span>
+                </button>
+            </div>
         </div>
 
-        <div id="mobile-menu" class="md:hidden flex-col gap-4 px-6 pt-4 pb-6 border-t border-rkBlue/10 mt-4 text-sm font-medium bg-rkWhite">
-            <a href="{% url 'home' %}" class="hover:text-rkBlue block py-1">Home</a>
-            <a href="{% url 'about' %}" class="hover:text-rkBlue block py-1">About Us</a>
-            <a href="{% url 'all_products' %}" class="hover:text-rkBlue block py-1">Products</a>
-            <a href="#contact" class="hover:text-rkBlue block py-1">Contact</a>
-            <a href="#contact" class="btn-blue inline-block px-6 py-2.5 rounded mt-2 text-center text-white"><span>Get a Quote</span></a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden flex-col gap-0 px-4 pt-2 pb-4 border-t border-rkBlue/10 mt-3 text-sm font-medium bg-rkWhite">
+            <a href="{% url 'home' %}" class="hover:text-rkBlue block py-3 border-b border-slate-100">Home</a>
+            <a href="{% url 'about' %}" class="hover:text-rkBlue block py-3 border-b border-slate-100">About Us</a>
+            <a href="{% url 'all_products' %}" class="hover:text-rkBlue block py-3 border-b border-slate-100">Products</a>
+            <a href="#process" class="hover:text-rkBlue block py-3 border-b border-slate-100" onclick="document.getElementById('mobile-menu').classList.remove('open')">How It Works</a>
+            <a href="#contact" class="hover:text-rkBlue block py-3 border-b border-slate-100" onclick="document.getElementById('mobile-menu').classList.remove('open')">Contact</a>
+            <a href="{% url 'recent_products' %}" class="hover:text-rkBlue block py-3 border-b border-slate-100">New Updates</a>
+            <a href="#contact" class="btn-blue inline-block w-full px-6 py-3 rounded mt-4 text-center text-white"><span>Get a Quote →</span></a>
         </div>
     </nav>
 
-
+    <!-- Hero Slider -->
     <div class="img-hero-slider" id="ihsSlider">
-
-    <div class="ihs-slide active">
-        <div class="ihs-slide-bg" style="background-image: url('{% static 'images/banner.jpg' %}');"></div>
-        <div class="ihs-content">
-            <div class="ihs-text">
-                <div class="ihs-label">Established Since 2013</div>
-                <h1 class="ihs-heading">India's Most Trusted<br><em>Packaging Machines</em></h1>
-                <p class="ihs-sub">Built for performance, priced for value.</p>
-                <div class="ihs-actions">
-                    <a href="#" class="ihs-btn-primary">Explore Products</a>
+        <div class="ihs-slide active">
+            <div class="ihs-slide-bg" style="background-image: url('{% static 'images/banner.jpg' %}');"></div>
+            <div class="ihs-content">
+                <div class="ihs-text">
+                    <div class="ihs-label">Established Since 2013</div>
+                    <h1 class="ihs-heading">India's Most Trusted<br><em>Packaging Machines</em></h1>
+                    <p class="ihs-sub">Built for performance, priced for value.</p>
+                    <div class="ihs-actions">
+                        <a href="#products" class="btn-blue px-6 py-2.5 rounded text-sm font-body uppercase tracking-wider"><span>Explore Products</span></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="ihs-slide">
-      <div class="ihs-slide-bg" style="background-image: url('{% static 'images/banner2.jpg' %}');"></div>
-        <div class="ihs-content">
-            <div class="ihs-text">
-                <div class="ihs-label">High Speed Operations</div>
-                <h1 class="ihs-heading">Automated<br><em>Filling Systems</em></h1>
-                <p class="ihs-sub">Unmatched 0.5% error range for perfect scaling.</p>
+        <div class="ihs-slide">
+            <div class="ihs-slide-bg" style="background-image: url('{% static 'images/banner2.jpg' %}');"></div>
+            <div class="ihs-content">
+                <div class="ihs-text">
+                    <div class="ihs-label">High Speed Operations</div>
+                    <h1 class="ihs-heading">Automated<br><em>Filling Systems</em></h1>
+                    <p class="ihs-sub">Unmatched 0.5% error range for perfect scaling.</p>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="ihs-slide">
-         <div class="ihs-slide-bg" style="background-image: url('{% static 'images/banner22.jpg' %}');"></div>
-        <div class="ihs-content">
-            <div class="ihs-text">
-                <div class="ihs-label">Industrial Grade</div>
-                <h1 class="ihs-heading">Reliable<br><em>Pouch Packing</em></h1>
-                <p class="ihs-sub">Backed by our 1-Year Warranty.</p>
+        <div class="ihs-slide">
+            <div class="ihs-slide-bg" style="background-image: url('{% static 'images/banner22.jpg' %}');"></div>
+            <div class="ihs-content">
+                <div class="ihs-text">
+                    <div class="ihs-label">Industrial Grade</div>
+                    <h1 class="ihs-heading">Reliable<br><em>Pouch Packing</em></h1>
+                    <p class="ihs-sub">Backed by our 1-Year Warranty.</p>
+                </div>
             </div>
         </div>
+        <button class="ihs-arrow ihs-arrow-prev" id="ihsPrev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="ihs-arrow ihs-arrow-next" id="ihsNext"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
+        <div class="ihs-dots" id="ihsDots">
+            <button class="ihs-dot active"></button>
+            <button class="ihs-dot"></button>
+            <button class="ihs-dot"></button>
+        </div>
+        <div class="ihs-progress"><div class="ihs-progress-fill" id="ihsFill"></div></div>
     </div>
 
-    <button class="ihs-arrow ihs-arrow-prev" id="ihsPrev"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
-    <button class="ihs-arrow ihs-arrow-next" id="ihsNext"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg></button>
-    <div class="ihs-dots" id="ihsDots">
-        <button class="ihs-dot active"></button><button class="ihs-dot"></button><button class="ihs-dot"></button>
-    </div>
-    <div class="ihs-progress"><div class="ihs-progress-fill" id="ihsFill"></div></div>
-</div>
-
-    <section id="home" class="hero-bg noise relative min-h-screen flex items-center px-6 py-24 overflow-hidden">
-        <div class="absolute top-1/4 right-0 w-[600px] h-[600px] rounded-full bg-rkBlueLight/10 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-20 left-10 w-[400px] h-[400px] rounded-full bg-rkBlue/5 blur-3xl pointer-events-none"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg noise relative min-h-screen flex items-center px-4 md:px-6 py-16 md:py-24 overflow-hidden">
+        <div class="absolute top-1/4 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full bg-rkBlueLight/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 left-10 w-[200px] md:w-[400px] h-[200px] md:h-[400px] rounded-full bg-rkBlue/5 blur-3xl pointer-events-none"></div>
         <div class="absolute inset-0 grid-pattern opacity-60 pointer-events-none"></div>
 
-        <div class="relative max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center z-10">
-            <div class="space-y-8">
+        <div class="relative max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-10 lg:gap-16 items-center z-10">
+            <div class="space-y-6 md:space-y-8">
                 <div class="anim-fade-up flex items-center gap-3">
-                    <div class="h-px w-12 bg-rkBlue"></div>
-                    <span class="text-rkBlue font-body text-xs tracking-[0.3em] uppercase font-semibold">Established Since 2013 · Delhi, India</span>
+                    <div class="h-px w-8 md:w-12 bg-rkBlue"></div>
+                    <span class="text-rkBlue font-body text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase font-semibold">Established Since 2013 · Delhi, India</span>
                 </div>
 
                 <div class="anim-fade-up delay-1">
-                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-display text-rkTextDark leading-none">
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display text-rkTextDark leading-none">
                         PRECISION<br>
                         <span class="text-rkBlue">PACKAGING</span><br>
                         MACHINES
                     </h1>
                 </div>
 
-                <p class="anim-fade-up delay-2 text-rkTextLight text-base md:text-lg leading-relaxed max-w-lg font-body">
+                <p class="anim-fade-up delay-2 text-rkTextLight text-sm md:text-base lg:text-lg leading-relaxed max-w-lg font-body">
                     Royal Khan Company engineers India's most trusted continuous band sealers, cap sealing machines, and industrial filling equipment — built for performance, priced for value.
                 </p>
 
-                <div class="anim-fade-up delay-3 flex flex-wrap gap-4">
-                    <a href="#products" class="btn-blue px-8 py-3.5 rounded font-body text-sm uppercase tracking-wider"><span>Explore Products →</span></a>
-                    <a href="https://wa.me/919958131152?text=Hello%20Royal%20Khan%20Company" class="btn-outline px-8 py-3.5 rounded font-body text-sm uppercase tracking-wider bg-white">
+                <div class="anim-fade-up delay-3 flex flex-col sm:flex-row flex-wrap gap-3 md:gap-4">
+                    <a href="#products" class="btn-blue px-6 md:px-8 py-3 md:py-3.5 rounded font-body text-sm uppercase tracking-wider text-center"><span>Explore Products →</span></a>
+                    <a href="https://wa.me/919958131152?text=Hello%20Royal%20Khan%20Company" class="btn-outline px-6 md:px-8 py-3 md:py-3.5 rounded font-body text-sm uppercase tracking-wider bg-white text-center">
                         Request Quote
                     </a>
                 </div>
 
-
-                
-
-                <div class="anim-fade-up delay-4 grid grid-cols-3 gap-6 pt-10 border-t border-rkBlue/10">
+                <div class="anim-fade-up delay-4 grid grid-cols-3 gap-4 md:gap-6 pt-8 md:pt-10 border-t border-rkBlue/10">
                     <div>
-                        <div class="stat-num text-5xl text-rkBlue">10<span class="text-2xl">+</span></div>
-                        <p class="text-xs text-rkTextLight uppercase tracking-widest mt-1 font-body">Years<br>Experience</p>
+                        <div class="stat-num text-4xl md:text-5xl text-rkBlue">10<span class="text-xl md:text-2xl">+</span></div>
+                        <p class="text-[10px] md:text-xs text-rkTextLight uppercase tracking-widest mt-1 font-body">Years<br>Experience</p>
                     </div>
                     <div>
-                        <div class="stat-num text-5xl text-rkBlue">500<span class="text-2xl">+</span></div>
-                        <p class="text-xs text-rkTextLight uppercase tracking-widest mt-1 font-body">Happy<br>Clients</p>
+                        <div class="stat-num text-4xl md:text-5xl text-rkBlue">500<span class="text-xl md:text-2xl">+</span></div>
+                        <p class="text-[10px] md:text-xs text-rkTextLight uppercase tracking-widest mt-1 font-body">Happy<br>Clients</p>
                     </div>
                     <div>
-                        <div class="stat-num text-5xl text-rkBlue">1K<span class="text-2xl">+</span></div>
-                        <p class="text-xs text-rkTextLight uppercase tracking-widest mt-1 font-body">Machines<br>Delivered</p>
+                        <div class="stat-num text-4xl md:text-5xl text-rkBlue">1K<span class="text-xl md:text-2xl">+</span></div>
+                        <p class="text-[10px] md:text-xs text-rkTextLight uppercase tracking-widest mt-1 font-body">Machines<br>Delivered</p>
                     </div>
                 </div>
             </div>
 
-            <div class="anim-slide-left delay-2 relative">
+            <!-- Product card — hidden on mobile/tablet, shown on lg+ -->
+            <div class="hero-product-card anim-slide-left delay-2 relative">
                 <div class="relative blue-glow rounded-2xl overflow-hidden border border-rkBlue/15 bg-white">
                     <div class="aspect-[4/3] overflow-hidden bg-slate-100 relative">
                         <img src="{% static 'images/band-sealer.jpg' %}" alt="Premium Continuous Band Sealer" class="w-full h-full object-cover opacity-90 hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <div class="absolute top-4 right-4 bg-rkBlue text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-md">
-                            ★ Bestseller
-                        </div>
+                        <div class="absolute top-4 right-4 bg-rkBlue text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-md">★ Bestseller</div>
                     </div>
-                    <div class="p-6">
+                    <div class="p-5 md:p-6">
                         <div class="flex justify-between items-start">
                             <div>
                                 <p class="text-rkBlue text-xs font-semibold uppercase tracking-widest">Featured Product</p>
-                                <h3 class="text-xl font-display text-rkTextDark mt-1">Heavy Duty SS Band Sealer</h3>
+                                <h3 class="text-lg md:text-xl font-display text-rkTextDark mt-1">Heavy Duty SS Band Sealer</h3>
                                 <p class="text-rkTextLight text-sm mt-1 font-body">Stainless Steel · 650W–750W · 0–300°C</p>
                             </div>
                             <div class="text-right">
-                                <p class="text-2xl font-display text-rkBlue">₹36,500</p>
+                                <p class="text-xl md:text-2xl font-display text-rkBlue">₹36,500</p>
                                 <p class="text-xs text-rkTextLight">+ GST</p>
                             </div>
                         </div>
                         <div class="blue-rule mt-4"></div>
-                        <div class="flex gap-4 mt-4">
+                        <div class="flex gap-3 mt-4">
                             <a href="#contact" class="btn-blue flex-1 py-2.5 rounded text-center text-sm font-body"><span>Get Quote</span></a>
                             <a href="https://wa.me/919958131152" class="btn-outline flex-1 py-2.5 rounded text-center text-sm font-body bg-slate-50">WhatsApp</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="absolute -left-6 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-2">
-                    <div class="bg-white border border-rkBlue/20 text-rkTextDark text-xs px-3 py-2 rounded-lg shadow-xl">
-                        <span class="text-rkBlue font-bold block">5–10mm</span> Seal Width
-                    </div>
-                    <div class="bg-white border border-rkBlue/20 text-rkTextDark text-xs px-3 py-2 rounded-lg shadow-xl">
-                        <span class="text-rkBlue font-bold block">0–300°C</span> Temp Range
-                    </div>
-                    <div class="bg-white border border-rkBlue/20 text-rkTextDark text-xs px-3 py-2 rounded-lg shadow-xl">
-                        <span class="text-rkBlue font-bold block">3 Kg</span> Max Load
-                    </div>
+                <div class="absolute -left-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-2">
+                    <div class="bg-white border border-rkBlue/20 text-rkTextDark text-xs px-3 py-2 rounded-lg shadow-xl"><span class="text-rkBlue font-bold block">5–10mm</span> Seal Width</div>
+                    <div class="bg-white border border-rkBlue/20 text-rkTextDark text-xs px-3 py-2 rounded-lg shadow-xl"><span class="text-rkBlue font-bold block">0–300°C</span> Temp Range</div>
+                    <div class="bg-white border border-rkBlue/20 text-rkTextDark text-xs px-3 py-2 rounded-lg shadow-xl"><span class="text-rkBlue font-bold block">3 Kg</span> Max Load</div>
                 </div>
             </div>
         </div>
 
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator flex flex-col items-center gap-2 opacity-60">
+        <!-- Scroll indicator — hide on mobile to save space -->
+        <div class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator flex-col items-center gap-2 opacity-60">
             <p class="text-rkTextLight text-[10px] uppercase tracking-widest font-bold">Scroll</p>
             <div class="w-px h-12"></div>
         </div>
     </section>
 
+    <!-- Marquee -->
     <div class="bg-rkBlue py-3 overflow-hidden border-y-0 shadow-inner">
         <div class="marquee-track">
-            <div class="flex items-center gap-12 px-8 text-white font-display text-sm tracking-widest uppercase">
+            <div class="flex items-center gap-10 px-6 text-white font-display text-xs md:text-sm tracking-widest uppercase">
                 <span>Band Sealer Machines</span><span class="text-white/40">◆</span>
                 <span>Cap Sealing Equipment</span><span class="text-white/40">◆</span>
                 <span>Liquid Filling Machines</span><span class="text-white/40">◆</span>
@@ -460,7 +473,6 @@
                 <span>Pan-India Delivery</span><span class="text-white/40">◆</span>
                 <span>After-Sales Support</span><span class="text-white/40">◆</span>
                 <span>Custom Solutions</span><span class="text-white/40">◆</span>
-
                 <span>Band Sealer Machines</span><span class="text-white/40">◆</span>
                 <span>Cap Sealing Equipment</span><span class="text-white/40">◆</span>
                 <span>Liquid Filling Machines</span><span class="text-white/40">◆</span>
@@ -473,43 +485,44 @@
         </div>
     </div>
 
-    <section class="py-24 px-6 bg-rkBgSoft relative">
+    <!-- Why Choose Us -->
+    <section class="py-16 md:py-24 px-4 md:px-6 bg-rkBgSoft relative">
         <div class="absolute inset-0 grid-pattern opacity-40 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-16">
+            <div class="text-center mb-10 md:mb-16">
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Why Choose Royal Khan</p>
-                <h2 class="text-5xl md:text-6xl font-display text-rkTextDark">BUILT DIFFERENT</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">BUILT DIFFERENT</h2>
                 <div class="blue-rule w-32 mx-auto mt-4"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="group p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="feat-icon mb-5 group-hover:bg-rkBlue/10 text-rkBlue transition-all">⚙️</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-3">PRECISION ENGINEERING</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div class="group p-5 md:p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="feat-icon mb-4 group-hover:bg-rkBlue/10 text-rkBlue transition-all">⚙️</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2 md:mb-3">PRECISION ENGINEERING</h3>
                     <p class="text-rkTextLight text-sm leading-relaxed font-body">Every machine is manufactured with ±0.1mm dimensional accuracy, using SS-304 food-grade steel and precision-hardened alloy components for lasting performance.</p>
                 </div>
-                <div class="group p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="feat-icon mb-5 group-hover:bg-rkBlue/10 text-rkBlue transition-all">🛡️</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-3">1-YEAR WARRANTY</h3>
+                <div class="group p-5 md:p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="feat-icon mb-4 group-hover:bg-rkBlue/10 text-rkBlue transition-all">🛡️</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2 md:mb-3">1-YEAR WARRANTY</h3>
                     <p class="text-rkTextLight text-sm leading-relaxed font-body">All machines come with a comprehensive 12-month warranty covering manufacturing defects. Our Delhi service team provides on-site support within 48 hours.</p>
                 </div>
-                <div class="group p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="feat-icon mb-5 group-hover:bg-rkBlue/10 text-rkBlue transition-all">📦</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-3">FAST DISPATCH</h3>
+                <div class="group p-5 md:p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="feat-icon mb-4 group-hover:bg-rkBlue/10 text-rkBlue transition-all">📦</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2 md:mb-3">FAST DISPATCH</h3>
                     <p class="text-rkTextLight text-sm leading-relaxed font-body">In-stock machines are dispatched within 24–48 hours. Pan-India freight covered on bulk orders. Export packaging available for international clients.</p>
                 </div>
-                <div class="group p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
-                    <div class="feat-icon mb-5 group-hover:bg-rkBlue/10 text-rkBlue transition-all">📞</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-3">DEDICATED SUPPORT</h3>
+                <div class="group p-5 md:p-6 rounded-xl border border-rkBlue/10 hover:border-rkBlue/40 bg-white shadow-sm hover:shadow-md transition-all duration-300">
+                    <div class="feat-icon mb-4 group-hover:bg-rkBlue/10 text-rkBlue transition-all">📞</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2 md:mb-3">DEDICATED SUPPORT</h3>
                     <p class="text-rkTextLight text-sm leading-relaxed font-body">Our technical experts are available 6 days a week. Free installation guidance via video call. Spare parts dispatched same-day from our Delhi warehouse.</p>
                 </div>
             </div>
 
-            <div class="mt-12 grid md:grid-cols-3 gap-6">
-                <div class="col-span-2 p-8 rounded-xl border border-rkBlue/20 bg-gradient-to-br from-rkBlue/5 to-white shadow-sm">
-                    <h3 class="text-2xl font-display text-rkTextDark mb-2">GST REGISTERED · PAN-INDIA TRUSTED</h3>
-                    <p class="text-rkTextLight text-sm font-body leading-relaxed mb-6">Royal Khan Company is a fully GST-compliant supplier. All invoices include proper tax documentation for ITC claims. We have delivered machines to food processors, dairy units, pharmaceutical manufacturers, and e-commerce packagers across 18 Indian states.</p>
-                    <div class="flex flex-wrap gap-3">
+            <div class="mt-8 md:mt-12 grid md:grid-cols-3 gap-4 md:gap-6">
+                <div class="md:col-span-2 p-6 md:p-8 rounded-xl border border-rkBlue/20 bg-gradient-to-br from-rkBlue/5 to-white shadow-sm">
+                    <h3 class="text-xl md:text-2xl font-display text-rkTextDark mb-2">GST REGISTERED · PAN-INDIA TRUSTED</h3>
+                    <p class="text-rkTextLight text-sm font-body leading-relaxed mb-5">Royal Khan Company is a fully GST-compliant supplier. All invoices include proper tax documentation for ITC claims. We have delivered machines to food processors, dairy units, pharmaceutical manufacturers, and e-commerce packagers across 18 Indian states.</p>
+                    <div class="flex flex-wrap gap-2">
                         <span class="text-xs border border-rkBlue/30 text-rkBlue px-3 py-1 rounded-full font-body bg-white">✓ GST Compliant</span>
                         <span class="text-xs border border-rkBlue/30 text-rkBlue px-3 py-1 rounded-full font-body bg-white">✓ MSME Registered</span>
                         <span class="text-xs border border-rkBlue/30 text-rkBlue px-3 py-1 rounded-full font-body bg-white">✓ ISO-Grade Quality</span>
@@ -517,8 +530,8 @@
                         <span class="text-xs border border-rkBlue/30 text-rkBlue px-3 py-1 rounded-full font-body bg-white">✓ Pan-India Delivery</span>
                     </div>
                 </div>
-                <div class="p-8 rounded-xl border border-rkBlue/20 bg-white shadow-sm flex flex-col justify-center items-center text-center">
-                    <div class="text-6xl font-display text-rkBlue mb-2">18+</div>
+                <div class="p-6 md:p-8 rounded-xl border border-rkBlue/20 bg-white shadow-sm flex flex-col justify-center items-center text-center">
+                    <div class="text-5xl md:text-6xl font-display text-rkBlue mb-2">18+</div>
                     <p class="text-rkTextDark font-body text-sm font-semibold">States Served Across India</p>
                     <div class="blue-rule w-20 mt-4"></div>
                     <p class="text-rkTextLight text-xs mt-4 font-body">From J&K to Tamil Nadu, our machines power production lines nationwide.</p>
@@ -527,23 +540,24 @@
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-rkWhite text-rkTextDark relative overflow-hidden">
+    <!-- Flagship Product -->
+    <section class="py-16 md:py-24 px-4 md:px-6 bg-rkWhite text-rkTextDark relative overflow-hidden">
         <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-rkBlue to-transparent opacity-50"></div>
-
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-10 md:mb-16">
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Deep Dive</p>
-                <h2 class="text-5xl md:text-6xl font-display text-rkTextDark">FLAGSHIP PRODUCT</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">FLAGSHIP PRODUCT</h2>
                 <div class="blue-rule w-32 mx-auto mt-4"></div>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-16 items-start">
-                <div class="space-y-4">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                <!-- Images -->
+                <div class="space-y-3">
                     <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-white relative group">
-                        <img src="{% static 'images/one.jpg' %}" alt="Heavy Duty SS Band Sealer" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-700">
+                        <img src="{% static 'images/one.jpg' %}" alt="Heavy Duty SS Band Sealer" class="w-full aspect-video md:aspect-square object-cover group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute top-4 left-4 bg-rkBlue text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase shadow-md">Featured</div>
                     </div>
-                    <div class="grid grid-cols-3 gap-3">
+                    <div class="grid grid-cols-3 gap-2 md:gap-3">
                         <div class="rounded-lg overflow-hidden border border-slate-200 bg-slate-50 aspect-square cursor-pointer hover:border-rkBlue transition-colors">
                             <img src="{% static 'images/download1.jpg' %}" alt="" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity">
                         </div>
@@ -556,38 +570,39 @@
                     </div>
                 </div>
 
-                <div class="space-y-8">
+                <!-- Details -->
+                <div class="space-y-6 md:space-y-8">
                     <div>
-                        <span class="inline-block bg-rkBlue/10 border border-rkBlue/30 text-rkBlue text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold mb-4">Band Sealer Machine</span>
-                        <h3 class="text-4xl font-display text-rkTextDark leading-tight">CONTINUOUS BAND SEALER<br>HEAVY DUTY STAINLESS STEEL</h3>
-                        <p class="text-3xl font-display text-rkBlue mt-4">₹36,500 <span class="text-base text-rkTextLight font-body font-normal">+ GST</span></p>
+                        <span class="inline-block bg-rkBlue/10 border border-rkBlue/30 text-rkBlue text-xs px-3 py-1 rounded-full uppercase tracking-wider font-semibold mb-3">Band Sealer Machine</span>
+                        <h3 class="text-3xl md:text-4xl font-display text-rkTextDark leading-tight">CONTINUOUS BAND SEALER<br>HEAVY DUTY STAINLESS STEEL</h3>
+                        <p class="text-2xl md:text-3xl font-display text-rkBlue mt-3">₹36,500 <span class="text-sm md:text-base text-rkTextLight font-body font-normal">+ GST</span></p>
                     </div>
 
-                    <p class="text-rkTextLight leading-relaxed font-body text-base">
-                        Our flagship continuous band sealer features a fully stainless steel construction for corrosion-free, food-safe operation in demanding industrial environments. The dual heating element system ensures uniform seal formation across the entire pouch width, while the variable-speed conveyor belt allows operators to precisely control throughput rates from 0 to 12 pouches per minute.
+                    <p class="text-rkTextLight leading-relaxed font-body text-sm md:text-base">
+                        Our flagship continuous band sealer features a fully stainless steel construction for corrosion-free, food-safe operation. The dual heating element system ensures uniform seal formation, while the variable-speed conveyor allows control of throughput from 0 to 12 pouches per minute.
                     </p>
 
                     <div>
-                        <h4 class="font-display text-xl text-rkTextDark mb-3">TECHNICAL SPECIFICATIONS</h4>
-                        <div class="rounded-xl overflow-hidden border border-slate-200">
-                            <table class="w-full text-sm font-body bg-white">
+                        <h4 class="font-display text-lg md:text-xl text-rkTextDark mb-3">TECHNICAL SPECIFICATIONS</h4>
+                        <div class="spec-table-wrap rounded-xl overflow-hidden border border-slate-200">
+                            <table class="w-full text-sm font-body bg-white min-w-[320px]">
                                 <tbody>
-                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark">Sealing Width</td><td class="px-4 py-3 text-rkTextLight">5–10 mm (adjustable)</td></tr>
-                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark">Sealing Speed</td><td class="px-4 py-3 text-rkTextLight">0–12 pouches/min (variable)</td></tr>
-                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark">Temperature Range</td><td class="px-4 py-3 text-rkTextLight">0–300°C (digital control)</td></tr>
-                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark">Max Pouch Weight</td><td class="px-4 py-3 text-rkTextLight">Up to 3 Kg</td></tr>
-                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark">Power Consumption</td><td class="px-4 py-3 text-rkTextLight">650W – 750W</td></tr>
-                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark">Body Material</td><td class="px-4 py-3 text-rkTextLight">SS-304 Stainless Steel</td></tr>
-                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark">Compatible Pouches</td><td class="px-4 py-3 text-rkTextLight">Plastic, Laminated, Aluminum Foil, BOPP</td></tr>
-                                    <tr class="spec-row"><td class="px-4 py-3 font-semibold text-rkTextDark">Warranty</td><td class="px-4 py-3 text-rkTextLight">12 Months from Invoice Date</td></tr>
+                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Sealing Width</td><td class="px-4 py-3 text-rkTextLight">5–10 mm (adjustable)</td></tr>
+                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Sealing Speed</td><td class="px-4 py-3 text-rkTextLight">0–12 pouches/min</td></tr>
+                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Temperature</td><td class="px-4 py-3 text-rkTextLight">0–300°C (digital)</td></tr>
+                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Max Pouch Weight</td><td class="px-4 py-3 text-rkTextLight">Up to 3 Kg</td></tr>
+                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Power</td><td class="px-4 py-3 text-rkTextLight">650W – 750W</td></tr>
+                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Body Material</td><td class="px-4 py-3 text-rkTextLight">SS-304 Stainless Steel</td></tr>
+                                    <tr class="spec-row border-b border-slate-100"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Compatible Pouches</td><td class="px-4 py-3 text-rkTextLight">Plastic, Laminated, Aluminum, BOPP</td></tr>
+                                    <tr class="spec-row"><td class="px-4 py-3 font-semibold text-rkTextDark whitespace-nowrap">Warranty</td><td class="px-4 py-3 text-rkTextLight">12 Months from Invoice</td></tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
                     <div>
-                        <h4 class="font-display text-xl text-rkTextDark mb-3">KEY FEATURES</h4>
-                        <div class="grid grid-cols-2 gap-2">
+                        <h4 class="font-display text-lg md:text-xl text-rkTextDark mb-3">KEY FEATURES</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
                             <div class="flex items-center gap-2 text-sm font-body text-rkTextDark"><span class="text-rkBlue">◆</span> SS-304 Body Construction</div>
                             <div class="flex items-center gap-2 text-sm font-body text-rkTextDark"><span class="text-rkBlue">◆</span> Digital Temp Controller</div>
                             <div class="flex items-center gap-2 text-sm font-body text-rkTextDark"><span class="text-rkBlue">◆</span> Variable Speed Conveyor</div>
@@ -599,41 +614,44 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap gap-3">
-                        <a href="https://wa.me/919958131152?text=I%20am%20interested%20in%20the%20Heavy%20Duty%20SS%20Band%20Sealer%20at%20₹36500" class="btn-blue px-8 py-3.5 rounded font-body text-sm uppercase tracking-wider"><span>Order on WhatsApp</span></a>
-                        <a href="#contact" class="btn-outline px-8 py-3.5 rounded font-body text-sm uppercase tracking-wider">Request Invoice</a>
+                    <div class="flex flex-col sm:flex-row flex-wrap gap-3">
+                        <a href="https://wa.me/919958131152?text=I%20am%20interested%20in%20the%20Heavy%20Duty%20SS%20Band%20Sealer%20at%20₹36500" class="btn-blue px-6 md:px-8 py-3 md:py-3.5 rounded font-body text-sm uppercase tracking-wider text-center"><span>Order on WhatsApp</span></a>
+                        <a href="#contact" class="btn-outline px-6 md:px-8 py-3 md:py-3.5 rounded font-body text-sm uppercase tracking-wider text-center">Request Invoice</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="products" class="py-24 px-6 bg-rkBgSoft relative">
+    <!-- Products -->
+    <section id="products" class="py-16 md:py-24 px-4 md:px-6 bg-rkBgSoft relative">
         <div class="absolute inset-0 grid-pattern opacity-40 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-12">
+            <div class="text-center mb-10 md:mb-12">
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Our Catalogue</p>
-                <h2 class="text-5xl md:text-6xl font-display text-rkTextDark">PRODUCT RANGE</h2>
-                <div class="blue-rule w-32 mx-auto mt-4 mb-8"></div>
-                <div class="flex flex-wrap justify-center gap-6 text-sm font-body">
-                    <button class="cat-tab active pb-2 text-rkBlue" onclick="filterCat(this,'all')">All Products</button>
-                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors" onclick="filterCat(this,'band')">Band Sealers</button>
-                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors" onclick="filterCat(this,'cap')">Cap Sealing</button>
-                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors" onclick="filterCat(this,'fill')">Filling Machines</button>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">PRODUCT RANGE</h2>
+                <div class="blue-rule w-32 mx-auto mt-4 mb-6 md:mb-8"></div>
+                <!-- Category filter tabs — scrollable on mobile -->
+                <div class="flex overflow-x-auto pb-1 justify-start md:justify-center gap-4 md:gap-6 text-sm font-body -mx-4 px-4 md:mx-0 md:px-0">
+                    <button class="cat-tab active pb-2 text-rkBlue whitespace-nowrap" onclick="filterCat(this,'all')">All Products</button>
+                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap" onclick="filterCat(this,'band')">Band Sealers</button>
+                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap" onclick="filterCat(this,'cap')">Cap Sealing</button>
+                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap" onclick="filterCat(this,'fill')">Filling Machines</button>
                 </div>
             </div>
 
-            <div id="product-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Product grid: 1 col mobile, 2 sm, 4 lg -->
+            <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 
                 <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="band">
-                    <div class="card-img h-52 overflow-hidden bg-slate-100 relative">
+                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
                         <img src="{% static 'images/download1.jpg' %}" alt="Economy Band Sealer" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm">Band Sealer</span>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-display text-rkTextDark leading-tight">ECONOMY IRON BODY BAND SEALER</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Ideal for small-scale operations. Iron body construction with adjustable temperature and speed. Perfect for LDPE and polythene bags.</p>
+                    <div class="p-4 md:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">ECONOMY IRON BODY BAND SEALER</h3>
+                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Ideal for small-scale operations. Iron body construction with adjustable temperature and speed.</p>
                         <div class="flex flex-wrap gap-1.5 mt-3">
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">5–10mm Seal</span>
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">0–300°C</span>
@@ -641,23 +659,23 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                             <div>
-                                <p class="text-2xl font-display text-rkBlue">₹11,500</p>
+                                <p class="text-xl md:text-2xl font-display text-rkBlue">₹11,500</p>
                                 <p class="text-[10px] text-rkTextLight">+ GST</p>
                             </div>
-                            <a href="https://wa.me/919958131152?text=Economy Band Sealer ₹11500" class="btn-blue text-xs px-3 py-2 rounded"><span>Quote</span></a>
+                            <a href="https://wa.me/919958131152?text=Economy Band Sealer ₹11500" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="band">
-                    <div class="card-img h-52 overflow-hidden bg-slate-100 relative">
+                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
                         <img src="{% static 'images/shopping.jpg' %}" alt="Standard Band Sealer" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm">Band Sealer</span>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-display text-rkTextDark leading-tight">STANDARD BAND SEALER MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Mid-range performer suitable for medium-production lines. Offers improved consistency over economy models with an upgraded motor assembly.</p>
+                    <div class="p-4 md:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">STANDARD BAND SEALER MACHINE</h3>
+                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Mid-range performer for medium-production lines with upgraded motor assembly.</p>
                         <div class="flex flex-wrap gap-1.5 mt-3">
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">5–10mm Seal</span>
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">0–300°C</span>
@@ -665,23 +683,23 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                             <div>
-                                <p class="text-2xl font-display text-rkBlue">₹20,000</p>
+                                <p class="text-xl md:text-2xl font-display text-rkBlue">₹20,000</p>
                                 <p class="text-[10px] text-rkTextLight">+ GST</p>
                             </div>
-                            <a href="https://wa.me/919958131152?text=Standard Band Sealer ₹20000" class="btn-blue text-xs px-3 py-2 rounded"><span>Quote</span></a>
+                            <a href="https://wa.me/919958131152?text=Standard Band Sealer ₹20000" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="cap">
-                    <div class="card-img h-52 overflow-hidden bg-slate-100 relative">
+                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
                         <img src="{% static 'images/sh.jpg' %}" alt="Cap Sealing Machine" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm">Cap Sealing</span>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-display text-rkTextDark leading-tight">HEAVY DUTY CAP SEALING MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Designed for pharmaceutical, cosmetic, and food-grade bottle sealing. Electromagnetic induction technology for tamper-proof seals without contact.</p>
+                    <div class="p-4 md:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">HEAVY DUTY CAP SEALING MACHINE</h3>
+                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Electromagnetic induction technology for tamper-proof seals without contact.</p>
                         <div class="flex flex-wrap gap-1.5 mt-3">
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Induction Type</span>
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">All Cap Sizes</span>
@@ -689,24 +707,24 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                             <div>
-                                <p class="text-2xl font-display text-rkBlue">₹25,000</p>
+                                <p class="text-xl md:text-2xl font-display text-rkBlue">₹25,000</p>
                                 <p class="text-[10px] text-rkTextLight">+ GST</p>
                             </div>
-                            <a href="https://wa.me/919958131152?text=Cap Sealing Machine ₹25000" class="btn-blue text-xs px-3 py-2 rounded"><span>Quote</span></a>
+                            <a href="https://wa.me/919958131152?text=Cap Sealing Machine ₹25000" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/20 shadow-md flex flex-col relative" data-cat="band">
                     <div class="absolute top-0 right-0 bg-rkBlue text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide z-10 shadow-sm">Most Popular</div>
-                    <div class="card-img h-52 overflow-hidden bg-slate-100 relative">
+                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
                         <img src="{% static 'images/sh1.jpg' %}" alt="Premium SS Band Sealer" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
                         <span class="absolute bottom-3 left-3 text-xs bg-rkBlue/90 backdrop-blur text-white px-2 py-0.5 rounded-full font-bold shadow-sm">★ Premium</span>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow border-t-2 border-rkBlue">
-                        <h3 class="text-lg font-display text-rkTextDark leading-tight">PREMIUM SS BAND SEALER</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Our flagship model — full SS-304 stainless steel body with advanced heat control, embossing attachment, and extended service life for continuous production.</p>
+                    <div class="p-4 md:p-5 flex flex-col flex-grow border-t-2 border-rkBlue">
+                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">PREMIUM SS BAND SEALER</h3>
+                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Flagship model — full SS-304 stainless steel body with advanced heat control and embossing attachment.</p>
                         <div class="flex flex-wrap gap-1.5 mt-3">
                             <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">SS-304 Body</span>
                             <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">650W</span>
@@ -714,24 +732,21 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                             <div>
-                                <p class="text-2xl font-display text-rkBlue">₹36,500</p>
+                                <p class="text-xl md:text-2xl font-display text-rkBlue">₹36,500</p>
                                 <p class="text-[10px] text-rkTextLight">+ GST</p>
                             </div>
-                            <a href="https://wa.me/919958131152?text=Premium SS Band Sealer ₹36500" class="btn-blue text-xs px-3 py-2 rounded"><span>Quote</span></a>
+                            <a href="https://wa.me/919958131152?text=Premium SS Band Sealer ₹36500" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="fill">
-                    <div class="card-img h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
-                        <div class="text-center text-slate-500">
-                            <div class="text-5xl mb-3">🏭</div>
-                            <p class="text-sm font-body">Semi-Auto Liquid Filler</p>
-                        </div>
+                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
+                        <div class="text-center text-slate-500"><div class="text-4xl mb-2">🏭</div><p class="text-sm font-body">Semi-Auto Liquid Filler</p></div>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-display text-rkTextDark leading-tight">SEMI-AUTO LIQUID FILLING MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Precision piston-based filling for oils, sauces, liquids, and semi-liquids. Adjustable fill volume from 50ml to 1000ml with foot-pedal operation.</p>
+                    <div class="p-4 md:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">SEMI-AUTO LIQUID FILLING MACHINE</h3>
+                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Adjustable fill volume from 50ml to 1000ml with foot-pedal operation.</p>
                         <div class="flex flex-wrap gap-1.5 mt-3">
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">50–1000ml</span>
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Piston Type</span>
@@ -739,179 +754,177 @@
                         </div>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                             <div>
-                                <p class="text-lg font-display text-rkBlue mt-1">On Request</p>
+                                <p class="text-base md:text-lg font-display text-rkBlue mt-1">On Request</p>
                                 <p class="text-[10px] text-rkTextLight">Call for pricing</p>
                             </div>
-                            <a href="https://wa.me/919958131152?text=Liquid Filling Machine inquiry" class="btn-blue text-xs px-3 py-2 rounded"><span>Enquire</span></a>
+                            <a href="https://wa.me/919958131152?text=Liquid Filling Machine inquiry" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Enquire</span></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="band">
-                    <div class="card-img h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
-                        <div class="text-center text-slate-500">
-                            <div class="text-5xl mb-3">📐</div>
-                            <p class="text-sm font-body">Vertical Band Sealer</p>
-                        </div>
+                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
+                        <div class="text-center text-slate-500"><div class="text-4xl mb-2">📐</div><p class="text-sm font-body">Vertical Band Sealer</p></div>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-display text-rkTextDark leading-tight">VERTICAL CONTINUOUS BAND SEALER</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Space-saving vertical orientation for sealing stand-up pouches, zip-lock bags, and pillow packs with consistent throughput.</p>
+                    <div class="p-4 md:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">VERTICAL CONTINUOUS BAND SEALER</h3>
+                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Space-saving vertical orientation for stand-up pouches, zip-lock bags, and pillow packs.</p>
                         <div class="flex flex-wrap gap-1.5 mt-3">
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Vertical Feed</span>
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Stand-Up Pouches</span>
                         </div>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                             <div>
-                                <p class="text-2xl font-display text-rkBlue">₹22,000</p>
+                                <p class="text-xl md:text-2xl font-display text-rkBlue">₹22,000</p>
                                 <p class="text-[10px] text-rkTextLight">+ GST</p>
                             </div>
-                            <a href="https://wa.me/919958131152?text=Vertical Band Sealer ₹22000" class="btn-blue text-xs px-3 py-2 rounded"><span>Quote</span></a>
+                            <a href="https://wa.me/919958131152?text=Vertical Band Sealer ₹22000" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
                         </div>
                     </div>
                 </div>
 
                 <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="cap">
-                    <div class="card-img h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
-                        <div class="text-center text-slate-500">
-                            <div class="text-5xl mb-3">🔩</div>
-                            <p class="text-sm font-body">Rotary Cap Sealer</p>
-                        </div>
+                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
+                        <div class="text-center text-slate-500"><div class="text-4xl mb-2">🔩</div><p class="text-sm font-body">Rotary Cap Sealer</p></div>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-display text-rkTextDark leading-tight">ROTARY CAP SEALING MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">High-speed rotary ROPP capping for mineral water, juice, and pharmaceutical bottles. Suitable for aluminum and PET caps of various diameters.</p>
+                    <div class="p-4 md:p-5 flex flex-col flex-grow">
+                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">ROTARY CAP SEALING MACHINE</h3>
+                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">High-speed ROPP capping for mineral water, juice, and pharmaceutical bottles.</p>
                         <div class="flex flex-wrap gap-1.5 mt-3">
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">ROPP Type</span>
                             <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">High Speed</span>
                         </div>
                         <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
                             <div>
-                                <p class="text-2xl font-display text-rkBlue">₹32,000</p>
+                                <p class="text-xl md:text-2xl font-display text-rkBlue">₹32,000</p>
                                 <p class="text-[10px] text-rkTextLight">+ GST</p>
                             </div>
-                            <a href="https://wa.me/919958131152?text=Rotary Cap Sealer ₹32000" class="btn-blue text-xs px-3 py-2 rounded"><span>Quote</span></a>
+                            <a href="https://wa.me/919958131152?text=Rotary Cap Sealer ₹32000" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="product-card border-2 border-dashed border-rkBlue/30 bg-white rounded-xl flex flex-col items-center justify-center text-center p-8 min-h-[300px] hover:bg-blue-50 transition-all cursor-pointer shadow-sm">
-                    <div class="text-4xl mb-4">📦</div>
-                    <h3 class="text-xl font-display text-rkBlue mb-2">25+ MORE PRODUCTS</h3>
-                    <p class="text-rkTextLight text-sm font-body mb-6">Explore our complete catalogue including shrink tunnels, vacuum sealers, date coders, and more.</p>
-                    <a href="{% url 'all_products' %}" class="btn-outline px-6 py-2.5 rounded text-sm font-body uppercase tracking-wider bg-white">View Full Catalogue →</a>
+                <div class="product-card border-2 border-dashed border-rkBlue/30 bg-white rounded-xl flex flex-col items-center justify-center text-center p-6 md:p-8 min-h-[260px] hover:bg-blue-50 transition-all cursor-pointer shadow-sm">
+                    <div class="text-3xl md:text-4xl mb-3">📦</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkBlue mb-2">25+ MORE PRODUCTS</h3>
+                    <p class="text-rkTextLight text-sm font-body mb-5">Explore shrink tunnels, vacuum sealers, date coders, and more.</p>
+                    <a href="{% url 'all_products' %}" class="btn-outline px-5 py-2.5 rounded text-sm font-body uppercase tracking-wider bg-white">View Full Catalogue →</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="process" class="py-24 px-6 bg-rkWhite text-rkTextDark">
+    <!-- How to Order -->
+    <section id="process" class="py-16 md:py-24 px-4 md:px-6 bg-rkWhite text-rkTextDark">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-10 md:mb-16">
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Simple Process</p>
-                <h2 class="text-5xl md:text-6xl font-display text-rkTextDark">HOW TO ORDER</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">HOW TO ORDER</h2>
                 <div class="blue-rule w-32 mx-auto mt-4"></div>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-8 text-center">
+            <!-- 2 cols on mobile, 4 on desktop -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
                 <div class="process-step">
-                    <div class="w-14 h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-2xl flex items-center justify-center mx-auto mb-5">01</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-2">CONTACT US</h3>
-                    <p class="text-rkTextLight text-sm font-body">Reach out via WhatsApp, phone, or email with your packaging requirements and production volume.</p>
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4">01</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">CONTACT US</h3>
+                    <p class="text-rkTextLight text-xs md:text-sm font-body">Reach out via WhatsApp, phone, or email with your requirements.</p>
                 </div>
                 <div class="process-step">
-                    <div class="w-14 h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-2xl flex items-center justify-center mx-auto mb-5">02</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-2">GET A QUOTE</h3>
-                    <p class="text-rkTextLight text-sm font-body">We respond within 2 hours with a detailed quotation including GST, shipping, and installation support.</p>
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4">02</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">GET A QUOTE</h3>
+                    <p class="text-rkTextLight text-xs md:text-sm font-body">We respond within 2 hours with a detailed GST quotation.</p>
                 </div>
                 <div class="process-step">
-                    <div class="w-14 h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-2xl flex items-center justify-center mx-auto mb-5">03</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-2">CONFIRM ORDER</h3>
-                    <p class="text-rkTextLight text-sm font-body">Pay via bank transfer, UPI, or cheque. We issue a GST invoice and prepare your machine for dispatch.</p>
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4">03</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">CONFIRM ORDER</h3>
+                    <p class="text-rkTextLight text-xs md:text-sm font-body">Pay via bank transfer, UPI, or cheque. GST invoice issued.</p>
                 </div>
                 <div>
-                    <div class="w-14 h-14 rounded-full bg-rkBlue text-white font-display text-2xl flex items-center justify-center mx-auto mb-5 shadow-md">04</div>
-                    <h3 class="text-xl font-display text-rkTextDark mb-2">RECEIVE & RUN</h3>
-                    <p class="text-rkTextLight text-sm font-body">Machine delivered and set up by our team. Free video-call training to get your production line running.</p>
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue text-white font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4 shadow-md">04</div>
+                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">RECEIVE & RUN</h3>
+                    <p class="text-rkTextLight text-xs md:text-sm font-body">Free video-call training to get your production line running.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-rkBgSoft">
+    <!-- Industries -->
+    <section class="py-16 md:py-24 px-4 md:px-6 bg-rkBgSoft">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-10 md:mb-16">
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Sector Coverage</p>
-                <h2 class="text-5xl md:text-6xl font-display text-rkTextDark">INDUSTRIES WE SERVE</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">INDUSTRIES WE SERVE</h2>
                 <div class="blue-rule w-32 mx-auto mt-4"></div>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <div class="group p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-4xl mb-3">🥛</div>
-                    <h4 class="font-display text-rkTextDark text-lg">DAIRY</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body">Milk pouches, curd tubs, paneer packing</p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
+                    <div class="text-3xl md:text-4xl mb-2">🥛</div>
+                    <h4 class="font-display text-rkTextDark text-base md:text-lg">DAIRY</h4>
+                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Milk pouches, curd tubs, paneer packing</p>
                 </div>
-                <div class="group p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-4xl mb-3">🍔</div>
-                    <h4 class="font-display text-rkTextDark text-lg">FOOD & BEVERAGE</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body">Snacks, spices, sauces, juices</p>
+                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
+                    <div class="text-3xl md:text-4xl mb-2">🍔</div>
+                    <h4 class="font-display text-rkTextDark text-base md:text-lg">FOOD & BEV</h4>
+                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Snacks, spices, sauces, juices</p>
                 </div>
-                <div class="group p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-4xl mb-3">💊</div>
-                    <h4 class="font-display text-rkTextDark text-lg">PHARMA</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body">Tablets, capsules, strip packing</p>
+                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
+                    <div class="text-3xl md:text-4xl mb-2">💊</div>
+                    <h4 class="font-display text-rkTextDark text-base md:text-lg">PHARMA</h4>
+                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Tablets, capsules, strip packing</p>
                 </div>
-                <div class="group p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-4xl mb-3">💄</div>
-                    <h4 class="font-display text-rkTextDark text-lg">COSMETICS</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body">Creams, lotions, beauty products</p>
+                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
+                    <div class="text-3xl md:text-4xl mb-2">💄</div>
+                    <h4 class="font-display text-rkTextDark text-base md:text-lg">COSMETICS</h4>
+                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Creams, lotions, beauty products</p>
                 </div>
-                <div class="group p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-4xl mb-3">🧪</div>
-                    <h4 class="font-display text-rkTextDark text-lg">CHEMICAL</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body">Fertilisers, agro-chemicals, adhesives</p>
+                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default col-span-2 sm:col-span-1">
+                    <div class="text-3xl md:text-4xl mb-2">🧪</div>
+                    <h4 class="font-display text-rkTextDark text-base md:text-lg">CHEMICAL</h4>
+                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Fertilisers, agro-chemicals, adhesives</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 px-6 bg-gradient-to-b from-rkWhite to-blue-50">
+    <!-- Testimonials -->
+    <section class="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-rkWhite to-blue-50">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
+            <div class="text-center mb-10 md:mb-16">
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Client Stories</p>
-                <h2 class="text-5xl md:text-6xl font-display text-rkTextDark">WHAT CLIENTS SAY</h2>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">WHAT CLIENTS SAY</h2>
                 <div class="blue-rule w-32 mx-auto mt-4"></div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="testimonial-card rounded-xl p-6">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <div class="testimonial-card rounded-xl p-5 md:p-6">
                     <div class="flex gap-1 text-rkBlue text-sm mb-4">★★★★★</div>
-                    <p class="text-slate-600 text-sm font-body italic leading-relaxed">"We've purchased 3 SS band sealers from Royal Khan and all three have been running without issues for over 2 years. The quality-to-price ratio is exceptional. Their team helped us set up over video call within 30 minutes."</p>
-                    <div class="mt-6 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-rkBlue/10 border border-rkBlue/30 flex items-center justify-center text-rkBlue font-display">R</div>
+                    <p class="text-slate-600 text-sm font-body italic leading-relaxed">"We've purchased 3 SS band sealers from Royal Khan and all three have been running without issues for over 2 years. The quality-to-price ratio is exceptional."</p>
+                    <div class="mt-5 flex items-center gap-3">
+                        <div class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-rkBlue/10 border border-rkBlue/30 flex items-center justify-center text-rkBlue font-display flex-shrink-0">R</div>
                         <div>
                             <p class="text-rkTextDark text-sm font-semibold font-body">Rahul Sharma</p>
                             <p class="text-rkTextLight text-xs font-body">MD, Sharma Food Processors, Haryana</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card rounded-xl p-6">
+                <div class="testimonial-card rounded-xl p-5 md:p-6">
                     <div class="flex gap-1 text-rkBlue text-sm mb-4">★★★★★</div>
-                    <p class="text-slate-600 text-sm font-body italic leading-relaxed">"Ordered a cap sealing machine for our pharmaceutical unit. Delivery was within 48 hours to Pune. Machine is running at 400 bottles/hour consistently. After-sales support has been prompt and professional."</p>
-                    <div class="mt-6 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-rkBlue/10 border border-rkBlue/30 flex items-center justify-center text-rkBlue font-display">P</div>
+                    <p class="text-slate-600 text-sm font-body italic leading-relaxed">"Ordered a cap sealing machine for our pharmaceutical unit. Delivery within 48 hours to Pune. Machine is running at 400 bottles/hour consistently."</p>
+                    <div class="mt-5 flex items-center gap-3">
+                        <div class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-rkBlue/10 border border-rkBlue/30 flex items-center justify-center text-rkBlue font-display flex-shrink-0">P</div>
                         <div>
                             <p class="text-rkTextDark text-sm font-semibold font-body">Priya Mehta</p>
                             <p class="text-rkTextLight text-xs font-body">Operations Head, MedPack Pharma, Pune</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card rounded-xl p-6">
+                <div class="testimonial-card rounded-xl p-5 md:p-6 sm:col-span-2 md:col-span-1">
                     <div class="flex gap-1 text-rkBlue text-sm mb-4">★★★★★</div>
-                    <p class="text-slate-600 text-sm font-body italic leading-relaxed">"Best value for money in the market. We compared 6 suppliers and Royal Khan had the best machine quality at this price point. Their GST invoice documentation was also flawless for our ITC claims."</p>
-                    <div class="mt-6 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-rkBlue/10 border border-rkBlue/30 flex items-center justify-center text-rkBlue font-display">A</div>
+                    <p class="text-slate-600 text-sm font-body italic leading-relaxed">"Best value for money in the market. We compared 6 suppliers and Royal Khan had the best machine quality at this price point."</p>
+                    <div class="mt-5 flex items-center gap-3">
+                        <div class="w-9 h-9 md:w-10 md:h-10 rounded-full bg-rkBlue/10 border border-rkBlue/30 flex items-center justify-center text-rkBlue font-display flex-shrink-0">A</div>
                         <div>
                             <p class="text-rkTextDark text-sm font-semibold font-body">Anil Kumar</p>
                             <p class="text-rkTextLight text-xs font-body">Director, AK Agro Industries, Punjab</p>
@@ -922,33 +935,34 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 px-6 bg-rkBgSoft text-rkTextDark">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <!-- About -->
+    <section id="about" class="py-16 md:py-24 px-4 md:px-6 bg-rkBgSoft text-rkTextDark">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-4">Our Story</p>
-                <h2 class="text-5xl font-display text-rkTextDark mb-2">ABOUT ROYAL KHAN</h2>
-                <h3 class="text-2xl font-serif italic text-rkBlue mb-6">A Decade of Packaging Excellence</h3>
-                <div class="blue-rule w-24 mb-8"></div>
-                <p class="text-rkTextLight text-base leading-relaxed mb-5 font-body">
-                    Founded in Delhi, Royal Khan Company has grown from a small workshop into one of India's most recognized names in industrial packaging machinery. We specialize in the design, manufacture, and supply of continuous band sealing machines, induction cap sealers, liquid filling machines, and ancillary packaging equipment.
+                <h2 class="text-4xl md:text-5xl font-display text-rkTextDark mb-2">ABOUT ROYAL KHAN</h2>
+                <h3 class="text-xl md:text-2xl font-serif italic text-rkBlue mb-5">A Decade of Packaging Excellence</h3>
+                <div class="blue-rule w-24 mb-6 md:mb-8"></div>
+                <p class="text-rkTextLight text-sm md:text-base leading-relaxed mb-4 font-body">
+                    Founded in Delhi, Royal Khan Company has grown from a small workshop into one of India's most recognized names in industrial packaging machinery. We specialize in continuous band sealing machines, induction cap sealers, liquid filling machines, and ancillary packaging equipment.
                 </p>
-                <p class="text-rkTextLight text-base leading-relaxed mb-8 font-body">
-                    Our manufacturing philosophy centers on three pillars: <strong class="text-rkTextDark">engineering precision</strong>, <strong class="text-rkTextDark">material quality</strong>, and <strong class="text-rkTextDark">honest pricing</strong>. Every machine undergoes a 24-point quality inspection before dispatch. We use food-grade SS-304 steel, Teflon-coated conveyor belts, and internationally-sourced heating elements to ensure performance that lasts.
+                <p class="text-rkTextLight text-sm md:text-base leading-relaxed mb-6 md:mb-8 font-body">
+                    Our manufacturing philosophy centers on three pillars: <strong class="text-rkTextDark">engineering precision</strong>, <strong class="text-rkTextDark">material quality</strong>, and <strong class="text-rkTextDark">honest pricing</strong>. Every machine undergoes a 24-point quality inspection before dispatch.
                 </p>
-                <div class="grid sm:grid-cols-2 gap-3">
-                    <div class="flex items-start gap-3 p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div class="flex items-start gap-3 p-3 md:p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
                         <span class="text-rkBlue mt-0.5">◆</span>
                         <div><p class="font-semibold text-rkTextDark text-sm">Premium Build Quality</p><p class="text-rkTextLight text-xs mt-0.5">SS-304 steel, 24-point QC inspection</p></div>
                     </div>
-                    <div class="flex items-start gap-3 p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
+                    <div class="flex items-start gap-3 p-3 md:p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
                         <span class="text-rkBlue mt-0.5">◆</span>
                         <div><p class="font-semibold text-rkTextDark text-sm">Competitive Pricing</p><p class="text-rkTextLight text-xs mt-0.5">Factory-direct, no middlemen</p></div>
                     </div>
-                    <div class="flex items-start gap-3 p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
+                    <div class="flex items-start gap-3 p-3 md:p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
                         <span class="text-rkBlue mt-0.5">◆</span>
                         <div><p class="font-semibold text-rkTextDark text-sm">After-Sales Support</p><p class="text-rkTextLight text-xs mt-0.5">48hr service, spare parts stock</p></div>
                     </div>
-                    <div class="flex items-start gap-3 p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
+                    <div class="flex items-start gap-3 p-3 md:p-4 rounded-lg bg-white border border-rkBlue/20 shadow-sm">
                         <span class="text-rkBlue mt-0.5">◆</span>
                         <div><p class="font-semibold text-rkTextDark text-sm">Custom Solutions</p><p class="text-rkTextLight text-xs mt-0.5">OEM builds for bulk orders</p></div>
                     </div>
@@ -956,67 +970,70 @@
             </div>
 
             <div class="space-y-4">
-                <div class="bg-rkBlue rounded-2xl p-8 text-white grid grid-cols-2 gap-8 blue-glow shadow-xl">
+                <div class="bg-rkBlue rounded-2xl p-6 md:p-8 text-white grid grid-cols-2 gap-6 md:gap-8 blue-glow shadow-xl">
                     <div class="text-center">
-                        <div class="stat-num text-6xl text-white">10<span class="text-3xl text-rkBlueLight">+</span></div>
+                        <div class="stat-num text-5xl md:text-6xl text-white">10<span class="text-2xl md:text-3xl text-rkBlueLight">+</span></div>
                         <p class="text-white/80 text-xs uppercase tracking-wider mt-2 font-body font-medium">Years in Business</p>
                     </div>
                     <div class="text-center">
-                        <div class="stat-num text-6xl text-white">500<span class="text-3xl text-rkBlueLight">+</span></div>
+                        <div class="stat-num text-5xl md:text-6xl text-white">500<span class="text-2xl md:text-3xl text-rkBlueLight">+</span></div>
                         <p class="text-white/80 text-xs uppercase tracking-wider mt-2 font-body font-medium">Happy Clients</p>
                     </div>
                     <div class="text-center">
-                        <div class="stat-num text-6xl text-white">1K<span class="text-3xl text-rkBlueLight">+</span></div>
+                        <div class="stat-num text-5xl md:text-6xl text-white">1K<span class="text-2xl md:text-3xl text-rkBlueLight">+</span></div>
                         <p class="text-white/80 text-xs uppercase tracking-wider mt-2 font-body font-medium">Machines Sold</p>
                     </div>
                     <div class="text-center">
-                        <div class="stat-num text-6xl text-white">18<span class="text-3xl text-rkBlueLight">+</span></div>
+                        <div class="stat-num text-5xl md:text-6xl text-white">18<span class="text-2xl md:text-3xl text-rkBlueLight">+</span></div>
                         <p class="text-white/80 text-xs uppercase tracking-wider mt-2 font-body font-medium">States Served</p>
                     </div>
                 </div>
-                <div class="rounded-xl border border-rkBlue/20 bg-white p-6 shadow-sm">
-                    <h4 class="font-display text-xl text-rkTextDark mb-4">VISIT OUR SHOWROOM</h4>
+                <div class="rounded-xl border border-rkBlue/20 bg-white p-5 md:p-6 shadow-sm">
+                    <h4 class="font-display text-lg md:text-xl text-rkTextDark mb-4">VISIT OUR SHOWROOM</h4>
                     <div class="space-y-3 text-sm font-body text-rkTextLight">
-                        <p class="flex items-start gap-2"><span class="text-rkBlue mt-0.5">📍</span> Gate No.2, Lift No.3, Metro Station, 27/3 Phool Bagh, Near Ashok Park Main, Delhi – 110035</p>
-                        <p class="flex items-center gap-2"><span class="text-rkBlue">📞</span> +91-9958131152</p>
-                        <p class="flex items-center gap-2"><span class="text-rkBlue">✉️</span> info@royalkhan.com</p>
-                        <p class="flex items-center gap-2"><span class="text-rkBlue">🕐</span> Mon–Sat: 9 AM – 7 PM IST</p>
+                        <p class="flex items-start gap-2"><span class="text-rkBlue mt-0.5 flex-shrink-0">📍</span> Gate No.2, Lift No.3, Metro Station, 27/3 Phool Bagh, Near Ashok Park Main, Delhi – 110035</p>
+                        <p class="flex items-center gap-2"><span class="text-rkBlue flex-shrink-0">📞</span><a href="tel:+919958131152" class="hover:text-rkBlue">+91-9958131152</a></p>
+                        <p class="flex items-center gap-2"><span class="text-rkBlue flex-shrink-0">✉️</span><a href="mailto:info@royalkhan.com" class="hover:text-rkBlue break-all">info@royalkhan.com</a></p>
+                        <p class="flex items-center gap-2"><span class="text-rkBlue flex-shrink-0">🕐</span> Mon–Sat: 9 AM – 7 PM IST</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-rkBlueDark text-white pt-20 pb-8 px-6 border-t-4 border-rkBlue relative overflow-hidden">
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-rkBlueDark text-white pt-14 md:pt-20 pb-8 px-4 md:px-6 border-t-4 border-rkBlue relative overflow-hidden">
         <div class="absolute inset-0 grid-pattern opacity-10 pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto mb-16 relative z-10">
-            <div class="rounded-2xl bg-gradient-to-r from-rkBlue/40 via-rkBlue/20 to-transparent border border-rkBlue/30 p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+        <!-- CTA Banner -->
+        <div class="max-w-7xl mx-auto mb-12 relative z-10">
+            <div class="rounded-2xl bg-gradient-to-r from-rkBlue/40 via-rkBlue/20 to-transparent border border-rkBlue/30 p-6 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-5 shadow-lg">
                 <div>
-                    <h2 class="text-4xl font-display text-white">READY TO UPGRADE YOUR<br><span class="text-rkBlueLight">PACKAGING LINE?</span></h2>
-                    <p class="text-slate-300 text-sm mt-3 font-body">Talk to our experts today. Free consultation, no obligation.</p>
+                    <h2 class="text-3xl md:text-4xl font-display text-white">READY TO UPGRADE YOUR<br><span class="text-rkBlueLight">PACKAGING LINE?</span></h2>
+                    <p class="text-slate-300 text-sm mt-2 font-body">Talk to our experts today. Free consultation, no obligation.</p>
                 </div>
-                <div class="flex flex-wrap gap-3 flex-shrink-0">
-                    <a href="https://wa.me/919958131152?text=Hello%20Royal%20Khan%20Company,%20I%20want%20a%20free%20consultation" class="btn-blue px-8 py-3.5 rounded font-body text-sm uppercase tracking-wider"><span>💬 WhatsApp Now</span></a>
-                    <a href="tel:+919958131152" class="btn-outline px-8 py-3.5 rounded font-body text-sm uppercase tracking-wider text-white border-white/40 hover:bg-white/10 hover:border-white">📞 Call Us</a>
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto flex-shrink-0">
+                    <a href="https://wa.me/919958131152?text=Hello%20Royal%20Khan%20Company,%20I%20want%20a%20free%20consultation" class="btn-blue px-6 md:px-8 py-3 rounded font-body text-sm uppercase tracking-wider text-center"><span>💬 WhatsApp Now</span></a>
+                    <a href="tel:+919958131152" class="btn-outline px-6 md:px-8 py-3 rounded font-body text-sm uppercase tracking-wider text-white border-white/40 hover:bg-white/10 hover:border-white text-center">📞 Call Us</a>
                 </div>
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 border-b border-white/10 pb-12 relative z-10">
-            <div class="lg:col-span-1">
-                <span class="text-3xl font-display text-rkBlueLight block mb-1">Royal Khan Co.</span>
-                <p class="text-[10px] text-slate-400 tracking-[0.3em] uppercase mb-5">Think Packaging Think Us</p>
-                <div class="blue-rule mb-6 opacity-70"></div>
+        <!-- Footer grid -->
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-10 border-b border-white/10 pb-10 relative z-10">
+            <div class="sm:col-span-2 lg:col-span-1">
+                <span class="text-2xl md:text-3xl font-display text-rkBlueLight block mb-1">Royal Khan Co.</span>
+                <p class="text-[10px] text-slate-400 tracking-[0.3em] uppercase mb-4">Think Packaging Think Us</p>
+                <div class="blue-rule mb-5 opacity-70"></div>
                 <ul class="space-y-3 text-slate-300 text-sm font-body">
                     <li class="flex items-start gap-2"><span class="text-rkBlueLight mt-0.5 flex-shrink-0">📍</span><span>Gate No.2, Phool Bagh, Ashok Park Main, Delhi – 110035</span></li>
-                    <li class="flex items-center gap-2"><span class="text-rkBlueLight">📞</span><a href="tel:+919958131152" class="hover:text-rkBlueLight transition-colors">+91-9958131152</a></li>
-                    <li class="flex items-center gap-2"><span class="text-rkBlueLight">✉️</span><a href="mailto:info@royalkhan.com" class="hover:text-rkBlueLight transition-colors">info@royalkhan.com</a></li>
+                    <li class="flex items-center gap-2"><span class="text-rkBlueLight flex-shrink-0">📞</span><a href="tel:+919958131152" class="hover:text-rkBlueLight transition-colors">+91-9958131152</a></li>
+                    <li class="flex items-center gap-2"><span class="text-rkBlueLight flex-shrink-0">✉️</span><a href="mailto:info@royalkhan.com" class="hover:text-rkBlueLight transition-colors break-all">info@royalkhan.com</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="font-display text-xl mb-5 text-white">QUICK LINKS</h4>
+                <h4 class="font-display text-lg md:text-xl mb-4 text-white">QUICK LINKS</h4>
                 <ul class="space-y-2 text-slate-300 text-sm font-body">
                     <li><a href="{% url 'home' %}" class="hover:text-rkBlueLight transition-colors flex items-center gap-2"><span class="text-rkBlueLight text-xs">▸</span>Home</a></li>
                     <li><a href="#about" class="hover:text-rkBlueLight transition-colors flex items-center gap-2"><span class="text-rkBlueLight text-xs">▸</span>About Us</a></li>
@@ -1028,7 +1045,7 @@
             </div>
 
             <div>
-                <h4 class="font-display text-xl mb-5 text-white">PRODUCTS</h4>
+                <h4 class="font-display text-lg md:text-xl mb-4 text-white">PRODUCTS</h4>
                 <ul class="space-y-2 text-slate-300 text-sm font-body">
                     <li><a href="#" class="hover:text-rkBlueLight transition-colors flex items-center gap-2"><span class="text-rkBlueLight text-xs">▸</span>Band Sealer Machines</a></li>
                     <li><a href="#" class="hover:text-rkBlueLight transition-colors flex items-center gap-2"><span class="text-rkBlueLight text-xs">▸</span>Cap Sealing Machines</a></li>
@@ -1040,38 +1057,39 @@
             </div>
 
             <div>
-                <h4 class="font-display text-xl mb-5 text-white">STAY UPDATED</h4>
+                <h4 class="font-display text-lg md:text-xl mb-4 text-white">STAY UPDATED</h4>
                 <p class="text-slate-400 text-xs mb-4 font-body">Get notified about new machines and special pricing.</p>
-                <div class="flex mb-6">
-                    <input type="email" placeholder="your@email.com" class="bg-white/10 text-white placeholder-slate-400 px-4 py-2.5 w-full outline-none focus:bg-white/15 border border-white/20 focus:border-rkBlueLight rounded-l text-sm transition-all font-body">
-                    <button class="bg-rkBlue hover:bg-rkBlueLight text-white px-4 py-2.5 rounded-r font-bold text-sm transition-colors">→</button>
+                <div class="flex newsletter-row mb-5">
+                    <input type="email" placeholder="your@email.com" class="bg-white/10 text-white placeholder-slate-400 px-3 py-2.5 flex-1 min-w-0 outline-none focus:bg-white/15 border border-white/20 focus:border-rkBlueLight rounded-l text-sm transition-all font-body">
+                    <button class="bg-rkBlue hover:bg-rkBlueLight text-white px-4 py-2.5 rounded-r font-bold text-sm transition-colors flex-shrink-0">→</button>
                 </div>
                 <h4 class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">We Accept</h4>
                 <div class="flex flex-wrap gap-2 text-xs font-bold">
-                    <span class="bg-white/10 border border-white/20 text-slate-300 px-3 py-1.5 rounded">VISA</span>
-                    <span class="bg-white/10 border border-white/20 text-slate-300 px-3 py-1.5 rounded">MASTERCARD</span>
-                    <span class="bg-white/10 border border-white/20 text-slate-300 px-3 py-1.5 rounded">UPI</span>
-                    <span class="bg-white/10 border border-white/20 text-slate-300 px-3 py-1.5 rounded">PAYTM</span>
-                    <span class="bg-white/10 border border-white/20 text-slate-300 px-3 py-1.5 rounded">NEFT/RTGS</span>
+                    <span class="bg-white/10 border border-white/20 text-slate-300 px-2 py-1 rounded">VISA</span>
+                    <span class="bg-white/10 border border-white/20 text-slate-300 px-2 py-1 rounded">MC</span>
+                    <span class="bg-white/10 border border-white/20 text-slate-300 px-2 py-1 rounded">UPI</span>
+                    <span class="bg-white/10 border border-white/20 text-slate-300 px-2 py-1 rounded">PAYTM</span>
+                    <span class="bg-white/10 border border-white/20 text-slate-300 px-2 py-1 rounded">NEFT</span>
                 </div>
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto text-xs text-slate-400 relative z-10 font-body">
+        <div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto text-xs text-slate-400 relative z-10 font-body gap-3">
             <p>Copyright © 2024 Royal Khan Company · All Rights Reserved · Delhi, India</p>
-            <div class="flex gap-5 mt-3 md:mt-0">
+            <div class="flex gap-4">
                 <a href="#" class="hover:text-rkBlueLight transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-rkBlueLight transition-colors">Terms of Service</a>
-                <a href="#" class="hover:text-rkBlueLight transition-colors">Shipping Policy</a>
+                <a href="#" class="hover:text-rkBlueLight transition-colors">Terms</a>
+                <a href="#" class="hover:text-rkBlueLight transition-colors">Shipping</a>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp FAB -->
     <a href="https://wa.me/919958131152?text=Hello%20Royal%20Khan%20Company,%20I%20am%20interested%20in%20your%20machines."
        target="_blank" rel="noopener noreferrer"
-       class="fixed bottom-6 right-6 w-16 h-16 flex items-center justify-center hover:scale-110 transition-all duration-300 z-[100] group drop-shadow-2xl">
+       class="wa-fab fixed bottom-6 right-6 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center hover:scale-110 transition-all duration-300 z-[100] group drop-shadow-2xl">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="w-full h-full object-contain drop-shadow-lg">
-        <span class="absolute right-20 bg-rkBlueDark border border-rkBlue/30 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-lg font-body">
+        <span class="absolute right-16 md:right-20 bg-rkBlueDark border border-rkBlue/30 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-lg font-body">
             Chat with us
         </span>
     </a>
@@ -1100,13 +1118,20 @@
                     card.style.display = 'none';
                 }
             });
-
-            // Always show "view all" card
             const viewAll = document.querySelector('#product-grid > div:not([data-cat])');
             if (viewAll) viewAll.style.display = '';
         }
 
-        // Intersection observer for scroll animations
+        // Close mobile menu on outside click
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobile-menu');
+            const hamburger = document.getElementById('hamburger');
+            if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+                menu.classList.remove('open');
+            }
+        });
+
+        // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1114,7 +1139,7 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
         document.querySelectorAll('.product-card, .testimonial-card').forEach(el => {
             el.style.opacity = '0';
@@ -1125,45 +1150,53 @@
     </script>
 
     <script>
-(function () {
-    const slides = document.querySelectorAll('#ihsSlider .ihs-slide');
-    const dots = document.querySelectorAll('#ihsDots .ihs-dot');
-    const fill = document.getElementById('ihsFill');
-    const TOTAL = slides.length;
-    const DELAY = 5000; 
-    let current = 0;
-    let autoTimer;
+        (function () {
+            const slides = document.querySelectorAll('#ihsSlider .ihs-slide');
+            const dots = document.querySelectorAll('#ihsDots .ihs-dot');
+            const fill = document.getElementById('ihsFill');
+            const TOTAL = slides.length;
+            const DELAY = 5000;
+            let current = 0;
+            let autoTimer;
 
-    function goTo(idx) {
-        slides[current].classList.remove('active');
-        dots[current].classList.remove('active');
-        current = (idx + TOTAL) % TOTAL;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
-        animateProgress();
-    }
+            function goTo(idx) {
+                slides[current].classList.remove('active');
+                dots[current].classList.remove('active');
+                current = (idx + TOTAL) % TOTAL;
+                slides[current].classList.add('active');
+                dots[current].classList.add('active');
+                animateProgress();
+            }
 
-    function animateProgress() {
-        fill.style.transition = 'none';
-        fill.style.width = '0%';
-        fill.getBoundingClientRect(); // Trigger reflow
-        fill.style.transition = 'width ' + DELAY + 'ms linear';
-        fill.style.width = '100%';
-    }
+            function animateProgress() {
+                fill.style.transition = 'none';
+                fill.style.width = '0%';
+                fill.getBoundingClientRect();
+                fill.style.transition = 'width ' + DELAY + 'ms linear';
+                fill.style.width = '100%';
+            }
 
-    function startAuto() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(() => goTo(current + 1), DELAY);
-    }
+            function startAuto() {
+                clearInterval(autoTimer);
+                autoTimer = setInterval(() => goTo(current + 1), DELAY);
+            }
 
-    // Event Listeners
-    document.getElementById('ihsPrev').onclick = () => { goTo(current - 1); startAuto(); };
-    document.getElementById('ihsNext').onclick = () => { goTo(current + 1); startAuto(); };
-    dots.forEach((dot, i) => dot.onclick = () => { goTo(i); startAuto(); });
+            // Touch swipe support for slider
+            let touchStartX = 0;
+            const slider = document.getElementById('ihsSlider');
+            slider.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+            slider.addEventListener('touchend', e => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 40) { goTo(diff > 0 ? current + 1 : current - 1); startAuto(); }
+            }, { passive: true });
 
-    animateProgress();
-    startAuto();
-})();
-</script>
+            document.getElementById('ihsPrev').onclick = () => { goTo(current - 1); startAuto(); };
+            document.getElementById('ihsNext').onclick = () => { goTo(current + 1); startAuto(); };
+            dots.forEach((dot, i) => dot.onclick = () => { goTo(i); startAuto(); });
+
+            animateProgress();
+            startAuto();
+        })();
+    </script>
 </body>
 </html>
