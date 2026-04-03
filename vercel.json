@@ -1,21 +1,10 @@
 {
-    "builds": [
-        {
-            "src": "build_files.sh",
-            "use": "@vercel/static-build",
-            "config": { "distDir": "staticfiles" }
-        },
-        {
-            "src": "royal_khan/wsgi.py",
-            "use": "@vercel/python",
-            "config": { "maxLambdaSize": "15mb" }
-        }
-    ],
+    "builds": [{
+        "src": "royal_khan/wsgi.py",
+        "use": "@vercel/python",
+        "config": { "maxLambdaSize": "15mb" }
+    }],
     "routes": [
-        {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        },
         {
             "src": "/(.*)",
             "dest": "royal_khan/wsgi.py"

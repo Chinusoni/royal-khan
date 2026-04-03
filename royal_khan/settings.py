@@ -96,15 +96,15 @@ LIVE_DB_URL = os.environ.get('DATABASE_URL') or os.environ.get('POSTGRES_URL')
 if LIVE_DB_URL:
     # We are on Vercel! Use the Neon PostgreSQL database.
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'neondb',
-        'USER': 'neondb_owner',
-        'PASSWORD': 'npg_ACQFZk4UbuJ3',
-        'HOST': 'ep-quiet-poetry-am11dyq2-pooler.c-5.us-east-1.aws.neon.tech',
-        'PORT': '5432',
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'neondb',
+            'USER': 'neondb_owner',
+            'PASSWORD': 'npg_ACQFZk4UbuJ3',
+            'HOST': 'ep-quiet-poetry-am11dyq2-pooler.c-5.us-east-1.aws.neon.tech',
+            'PORT': '5432',
+        }
     }
-}
 else:
     # We are on your laptop! Use the local SQLite database.
     DATABASES = {
@@ -113,6 +113,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
