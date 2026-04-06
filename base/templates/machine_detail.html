@@ -2,77 +2,147 @@
 {% load static %}
 
 {% block content %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
-    body { background-color: #faf8f5; }
+    /* Base Theme Overrides for this page */
+    body { 
+        background-color: #f8fafc; /* rkBgSoft */
+        font-family: 'DM Sans', sans-serif;
+        color: #1e293b; /* rkTextDark */
+    }
     
+    h1, h2, h3, .font-display { 
+        font-family: 'Bebas Neue', sans-serif; 
+        letter-spacing: 0.04em; 
+        color: #0f172a;
+    }
+
     /* Container for the flyer/image */
     .machine-display-box {
         background-color: #ffffff;
-        border-radius: 20px;
+        border-radius: 1rem;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
-        /* This ensures the tall flyer is never cut off */
-        min-height: 400px;
+        min-height: 450px;
         height: auto; 
-        padding: 10px;
+        padding: 1.5rem;
+        border: 1px solid rgba(2, 132, 199, 0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
 
     .machine-img {
         width: 100%;
         height: auto;
-        max-height: 80vh; /* Keeps it within the screen height */
+        max-height: 75vh; 
         object-fit: contain;
     }
 
-    .btn-whatsapp {
-        background-color: #25D366;
-        color: white;
-        transition: all 0.3s ease;
-    }
-    .btn-whatsapp:hover {
-        background-color: #128C7E;
-        color: white;
-        transform: scale(1.02);
+    /* Styling Elements */
+    .blue-rule { 
+        height: 3px; 
+        width: 60px;
+        background: linear-gradient(90deg, #0284c7, #38bdf8); 
+        margin-bottom: 24px;
+        border-radius: 2px;
     }
 
+    .badge-premium {
+        background-color: rgba(2, 132, 199, 0.08);
+        color: #0284c7;
+        border: 1px solid rgba(2, 132, 199, 0.2);
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+    }
+
+    .specs-card {
+        background-color: #f0f9ff;
+        border: 1px dashed rgba(2, 132, 199, 0.3);
+        border-radius: 0.75rem;
+    }
+
+    /* Buttons */
+    .btn-whatsapp {
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        border: none;
+        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+        transition: all 0.3s;
+    }
+    .btn-whatsapp:hover {
+        background: linear-gradient(135deg, #128C7E, #075E54);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        color: white;
+    }
+
+    .btn-outline-blue {
+        border: 2px solid rgba(2, 132, 199, 0.3);
+        color: #0284c7;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: all 0.3s;
+        background: transparent;
+    }
+    .btn-outline-blue:hover {
+        background: rgba(2, 132, 199, 0.05);
+        border-color: #0284c7;
+        color: #0284c7;
+    }
+
+    /* Typography helpers */
+    .text-rkTextLight { color: #64748b; }
+    .text-rkBlue { color: #0284c7; }
+    
     @media (max-width: 768px) {
-        .display-6 { font-size: 1.8rem; }
         .machine-display-box { min-height: 300px; }
+        .title-display { font-size: 2.8rem; line-height: 1.1; }
+    }
+    @media (min-width: 769px) {
+        .title-display { font-size: 3.5rem; line-height: 1.1; }
     }
 </style>
 
-<div class="container py-4 py-md-5" style="margin-top: 70px;">
+<div class="container py-4 py-md-5" style="margin-top: 50px;">
     <nav aria-label="breadcrumb" class="mb-4 d-none d-md-block">
-        <ol class="breadcrumb bg-transparent p-0">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-decoration-none text-muted">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'all_products' %}" class="text-decoration-none text-muted">Products</a></li>
-            <li class="breadcrumb-item active text-dark fw-bold">{{ product.title }}</li>
+        <ol class="breadcrumb p-0 text-uppercase tracking-wider" style="font-size: 0.75rem; font-weight: 700;">
+            <li class="breadcrumb-item"><a href="{% url 'home' %}" class="text-decoration-none text-rkTextLight hover:text-rkBlue">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'all_products' %}" class="text-decoration-none text-rkTextLight hover:text-rkBlue">Products</a></li>
+            <li class="breadcrumb-item active text-rkBlue" aria-current="page">{{ product.title }}</li>
         </ol>
     </nav>
 
-    <div class="row gy-4">
+    <div class="row gy-5">
         <div class="col-lg-6">
-            <div class="machine-display-box shadow-sm">
+            <div class="machine-display-box">
                 {% if product.image %}
                     <img src="{{ product.image.url }}" class="machine-img" alt="{{ product.title }}">
                 {% else %}
                     <div class="text-center py-5 text-muted">
-                        <i class="fas fa-image fa-4x mb-3 opacity-25"></i>
-                        <p>No Image Available</p>
+                        <i class="fas fa-image fa-4x mb-3" style="opacity: 0.1;"></i>
+                        <p class="font-body text-rkTextLight">No Image Available</p>
                     </div>
                 {% endif %}
             </div>
 
             {% if product.video_url %}
             <div class="mt-4 d-none d-lg-block">
-                <div class="card border-0 shadow-sm rounded-4 p-2">
-                    <p class="small fw-bold mb-2 ms-2 text-danger"><i class="fab fa-youtube me-1"></i> Demo Video</p>
+                <div class="card border-0 shadow-sm rounded-4 p-3 bg-white" style="border: 1px solid rgba(2, 132, 199, 0.1);">
+                    <p class="small fw-bold mb-3 ms-1 text-danger text-uppercase tracking-wider"><i class="fab fa-youtube me-2"></i> Machine Demo Video</p>
                     <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
-                        <iframe src="{{ product.video_url }}" allowfullscreen></iframe>
+                        <iframe src="{{ product.video_url }}" allowfullscreen style="border: none;"></iframe>
                     </div>
                 </div>
             </div>
@@ -80,41 +150,63 @@
         </div>
 
         <div class="col-lg-6">
-            <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm h-100">
+            <div class="bg-white p-4 p-md-5 h-100" style="border-radius: 1rem; border: 1px solid rgba(2, 132, 199, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+                
                 {% if product.is_featured %}
-                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3">
-                        <i class="fas fa-certificate me-1"></i> Top Seller
-                    </span>
+                    <div class="mb-3">
+                        <span class="badge-premium rounded-pill inline-block">
+                            ★ Featured Product
+                        </span>
+                    </div>
                 {% endif %}
 
-                <h1 class="display-6 fw-bold mb-3 text-dark">{{ product.title }}</h1>
+                <h1 class="title-display mb-3">{{ product.title }}</h1>
+                <div class="blue-rule"></div>
                 
-                <div class="description-text text-muted mb-4" style="white-space: pre-line; line-height: 1.7;">
+                <div class="description-text text-rkTextLight mb-5" style="white-space: pre-line; line-height: 1.8; font-size: 1.05rem;">
                     {{ product.description }}
                 </div>
 
-                <div class="specs-mini mb-4 p-3 bg-light rounded-3">
-                    <div class="row g-2">
-                        <div class="col-6"><small class="text-uppercase text-muted d-block">Updated</small> <strong>{{ product.created_at|date:"M Y" }}</strong></div>
-                        <div class="col-6"><small class="text-uppercase text-muted d-block">Category</small> <strong>Packaging</strong></div>
+                {% if product.update_note %}
+                <div class="mb-4 p-3 rounded-3" style="background-color: #fffbeb; border: 1px solid rgba(245, 158, 11, 0.3);">
+                    <div class="d-flex align-items-start gap-2">
+                        <i class="fas fa-bolt text-warning mt-1"></i>
+                        <div>
+                            <p class="mb-0 fw-bold" style="color: #b45309; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Recent Tech Update</p>
+                            <p class="mb-0 text-dark small mt-1">{{ product.update_note }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="specs-card mb-5 p-4">
+                    <div class="row g-3">
+                        <div class="col-6 border-end border-rkBlue border-opacity-10">
+                            <small class="text-uppercase text-rkBlue d-block fw-bold tracking-wider" style="font-size: 0.7rem;">Last Updated</small> 
+                            <strong class="text-dark fs-6">{{ product.updated_at|date:"F Y" }}</strong>
+                        </div>
+                        <div class="col-6 ps-4">
+                            <small class="text-uppercase text-rkBlue d-block fw-bold tracking-wider" style="font-size: 0.7rem;">Category</small> 
+                            <strong class="text-dark fs-6">Packaging Equipment</strong>
+                        </div>
                     </div>
                 </div>
 
-                <div class="d-grid gap-2">
+                <div class="d-grid gap-3">
                     <a href="https://wa.me/919958131152?text=I'm%20interested%20in%20the%20{{ product.title|urlencode }}" 
-                       class="btn btn-lg btn-whatsapp rounded-pill fw-bold">
-                        <i class="fab fa-whatsapp me-2"></i> Get Current Price
+                       class="btn py-3 btn-whatsapp rounded-1">
+                        <i class="fab fa-whatsapp me-2 fs-5 align-middle"></i> Get Current Price
                     </a>
-                    <a href="{% url 'all_products' %}" class="btn btn-outline-secondary rounded-pill">
-                        View All Machines
+                    <a href="{% url 'all_products' %}" class="btn py-3 btn-outline-blue rounded-1">
+                        View All Machines &rarr;
                     </a>
                 </div>
 
                 {% if product.video_url %}
-                <div class="mt-5 d-lg-none">
-                    <p class="fw-bold text-danger"><i class="fab fa-youtube me-1"></i> Machine Demo</p>
+                <div class="mt-5 d-lg-none pt-4 border-top border-slate-100">
+                    <p class="fw-bold text-danger text-uppercase tracking-wider small mb-3"><i class="fab fa-youtube me-2"></i> Machine Demo</p>
                     <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-sm">
-                        <iframe src="{{ product.video_url }}" allowfullscreen></iframe>
+                        <iframe src="{{ product.video_url }}" allowfullscreen style="border: none;"></iframe>
                     </div>
                 </div>
                 {% endif %}

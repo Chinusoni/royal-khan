@@ -5,16 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Royal Khan Company | Industrial Packaging</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .navbar-brand { font-weight: bold; color: #D4AF37 !important; }
+        /* Make the brand stack vertically like the home page */
+        .navbar-brand { 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+        }
+        
+        /* Royal Khan Main Title */
+        .brand-title { 
+            font-family: 'Bebas Neue', sans-serif; 
+            color: #6fc1eb !important; 
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+        
+        /* Think Packaging Think Us Tagline */
+        .brand-tagline {
+            font-family: 'DM Sans', sans-serif;
+            color: #0284c7 !important;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
         footer { background: #2c3e50; color: white; padding: 20px 0; margin-top: 50px; }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">ROYAL KHAN</a>
+            <a class="navbar-brand text-decoration-none" href="{% url 'home' %}">
+                <span class="brand-title">ROYAL KHAN</span>
+                <span class="brand-tagline">Think Packaging Think Us</span>
+            </a>
+            
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="{% url 'home' %}">Home</a>
                 <a class="nav-link" href="{% url 'all_products' %}">Products</a>
