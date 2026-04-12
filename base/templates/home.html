@@ -85,7 +85,6 @@
         .product-card .card-img img { transition: transform 0.7s cubic-bezier(.22,1,.36,1); }
         .product-card:hover .card-img img { transform: scale(1.08); }
 
-        /* Mobile: tap state for cards (no hover on touch) */
         @media (max-width: 767px) {
             .product-card:active { transform: scale(0.98); box-shadow: 0 8px 20px rgba(2,132,199,0.1); }
         }
@@ -132,7 +131,7 @@
         .btn-blue:hover::before { opacity: 1; }
         .btn-blue:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(2,132,199,0.3); }
         .btn-blue span { position: relative; z-index: 1; }
-        /* Mobile active state for buttons */
+
         @media (max-width: 767px) {
             .btn-blue:active { transform: scale(0.97); }
             .btn-outline:active { transform: scale(0.97); }
@@ -187,7 +186,6 @@
             padding: 0 16px 0 62px;
         }
         @media (min-width: 768px) { .ihs-content { padding: 0 7vw; } }
-        /* Mobile: center content vertically a bit higher so dots don't overlap */
         @media (max-width: 767px) {
             .ihs-content { align-items: flex-end; padding-bottom: 72px; padding-left: 20px; padding-right: 20px; }
         }
@@ -230,106 +228,78 @@
         .ihs-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,.08); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.18); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; }
         @media (min-width: 768px) { .ihs-arrow { width: 46px; height: 46px; } }
         .ihs-arrow:hover { border-color: #1fb6ff; background: rgba(31,182,255,.25); }
-        /* Hide arrows on very small screens — swipe instead */
         @media (max-width: 479px) { .ihs-arrow { display: none; } }
         .ihs-arrow-prev { left: 12px; }
         .ihs-arrow-next { right: 12px; }
         @media (min-width: 768px) { .ihs-arrow-prev { left: 28px; } .ihs-arrow-next { right: 28px; } }
 
-        /* Mobile swipe hint */
         .swipe-hint { position: absolute; bottom: 52px; left: 50%; transform: translateX(-50%); z-index: 10; color: rgba(255,255,255,0.4); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 5px; }
         @media (min-width: 480px) { .swipe-hint { display: none; } }
 
-        /* Hero product card — hidden on mobile/tablet */
         @media (max-width: 1023px) {
             .hero-product-card { display: none; }
         }
 
-        /* Spec table scroll on small screens */
         .spec-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
-        /* Touch target sizing for ALL interactive elements */
         @media (max-width: 767px) {
             .btn-blue, .btn-outline {
                 min-height: 48px;
                 display: inline-flex; align-items: center; justify-content: center;
                 font-size: 0.8rem;
             }
-            /* Larger tap areas for nav/quick actions */
             .nav-link { padding: 8px 0; }
             a[href^="tel"], a[href^="mailto"] { display: inline-flex; align-items: center; min-height: 44px; }
         }
 
-        /* Mobile stats: slightly more breathing room */
         @media (max-width: 479px) {
             .stat-num { font-size: 2.5rem !important; }
         }
 
-        /* Footer newsletter input on mobile */
+        /* Footer newsletter input on mobile — replaced by fix #10 below */
         @media (max-width: 480px) {
-            .newsletter-row { flex-direction: column; gap: 8px; }
-            .newsletter-row input { border-radius: 6px; min-height: 48px; font-size: 1rem; }
-            .newsletter-row button { border-radius: 6px; width: 100%; padding: 13px; min-height: 48px; font-size: 0.95rem; }
+            .newsletter-row input { min-height: 48px; font-size: 1rem; }
+            .newsletter-row button { width: 100%; padding: 13px; min-height: 48px; font-size: 0.95rem; }
         }
 
-        /* WhatsApp FAB */
         @media (max-width: 767px) {
             .wa-fab { width: 56px !important; height: 56px !important; bottom: 18px !important; right: 18px !important; }
         }
 
         /* ========== MOBILE-SPECIFIC IMPROVEMENTS ========== */
 
-        /* Sticky top bar hidden on very small screens to save space */
         @media (max-width: 359px) {
             .topbar-phone-label { display: none; }
-        }
-
-        /* Mobile hero section tweaks */
-        @media (max-width: 767px) {
-            #home { min-height: auto; padding-top: 48px; padding-bottom: 48px; }
-            #home .stat-num { font-size: 2.8rem; }
         }
 
         /* Product category tabs: horizontal scroll with hidden scrollbar */
         .cat-tabs-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .cat-tabs-scroll::-webkit-scrollbar { display: none; }
 
-        /* Mobile product card: taller image for better visual */
         @media (max-width: 639px) {
             .product-card .card-img { height: 200px !important; }
         }
 
-        /* Process steps: 2 col on mobile with connecting dots */
         @media (max-width: 639px) {
             .process-step .step-circle { width: 48px; height: 48px; font-size: 1.1rem; }
         }
 
-        /* Industries grid: equal height cards on mobile */
         @media (max-width: 639px) {
             .industry-card { padding: 16px 12px; }
             .industry-card h4 { font-size: 0.95rem; }
         }
 
-        /* Testimonial cards: full bleed on mobile */
-        @media (max-width: 639px) {
-            .testimonial-card { border-radius: 12px; padding: 20px; }
-        }
-
-        /* About section: stack properly */
         @media (max-width: 1023px) {
             #about .stat-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Mobile CTA banner in footer */
         @media (max-width: 639px) {
             .footer-cta-btns { flex-direction: column; width: 100%; }
             .footer-cta-btns a { width: 100%; text-align: center; justify-content: center; }
         }
 
-        /* Quick contact bar — NEW mobile-only sticky bottom bar */
-        .mobile-sticky-cta {
-            display: none;
-        }
+        /* Mobile sticky CTA bar */
+        .mobile-sticky-cta { display: none; }
         @media (max-width: 767px) {
             .mobile-sticky-cta {
                 display: flex;
@@ -339,11 +309,8 @@
                 background: #0f172a;
                 border-top: 1px solid rgba(2,132,199,0.3);
                 box-shadow: 0 -8px 24px rgba(0,0,0,0.25);
-                /* Account for home indicator on modern phones */
                 padding-bottom: env(safe-area-inset-bottom, 0px);
             }
-            /* Push page content up so the bar doesn't overlap */
-            body { padding-bottom: 60px; }
         }
 
         .mobile-sticky-cta a {
@@ -371,21 +338,17 @@
         .mobile-sticky-cta a.primary:active { opacity: 0.88; }
         .mobile-sticky-cta a svg { width: 20px; height: 20px; flex-shrink: 0; }
 
-        /* Batch coding section mobile layout */
         @media (max-width: 639px) {
             .batch-thumb-grid { grid-template-columns: repeat(3,1fr); gap: 6px; }
         }
 
-        /* Smooth section scroll offset for sticky nav */
         html { scroll-padding-top: 68px; }
         @media (max-width: 767px) { html { scroll-padding-top: 58px; } }
 
-        /* Mobile top bar compact */
         @media (max-width: 479px) {
             .topbar { padding-top: 6px; padding-bottom: 6px; }
         }
 
-        /* Mobile menu: full-screen feel with animation */
         #mobile-menu.open {
             animation: menuSlideDown 0.22s cubic-bezier(.22,1,.36,1) both;
         }
@@ -393,7 +356,6 @@
             from { opacity: 0; transform: translateY(-8px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Mobile menu items: bigger touch targets */
         #mobile-menu a {
             padding-top: 14px;
             padding-bottom: 14px;
@@ -401,28 +363,96 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* GST/trust badges: horizontal scroll on mobile */
         .trust-badges { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-wrap: nowrap !important; }
         .trust-badges::-webkit-scrollbar { display: none; }
         @media (min-width: 640px) { .trust-badges { flex-wrap: wrap !important; overflow: visible; } }
 
-        /* Feature cards: 1 col on xs, 2 col on sm */
         @media (max-width: 479px) {
             .feature-grid { grid-template-columns: 1fr !important; }
         }
 
-        /* Scroll reveal */
         .sr-hidden { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
         .sr-visible { opacity: 1; transform: translateY(0); }
 
-        /* Mobile: Batch Coding spec table full width */
         @media (max-width: 639px) {
             .spec-table-wrap table { font-size: 0.8rem; }
             .spec-table-wrap td { padding: 10px 12px; }
         }
 
-        /* Pill badge for "new" label in nav */
         .new-badge { background: #0284c7; color: #fff; font-size: 0.55rem; font-weight: 800; padding: 1px 5px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.05em; vertical-align: middle; margin-left: 4px; }
+
+        /* ========= MOBILE FIXES ========= */
+
+        /* 1. Hide redundant hero section on mobile — slider covers it */
+        @media (max-width: 767px) {
+            #home { display: none; }
+        }
+
+        /* 2. Product cards: 1 col on very small screens */
+        @media (max-width: 399px) {
+            #product-grid { grid-template-columns: 1fr !important; }
+            #product-grid .col-span-2 { grid-column: span 1 !important; }
+        }
+
+        /* 3. Fix sticky bar overlap — increase body bottom padding */
+        @media (max-width: 767px) {
+            body { padding-bottom: 80px !important; }
+            footer#contact { padding-bottom: 24px; }
+        }
+
+        /* 4. Hero slider heading — tighten on small phones */
+        @media (max-width: 479px) {
+            .ihs-heading { font-size: clamp(1.4rem, 8vw, 2.2rem) !important; margin-bottom: 6px; }
+            .ihs-sub { font-size: 0.78rem !important; margin-bottom: 14px !important; }
+            .ihs-content { padding-bottom: 60px !important; padding-left: 16px !important; padding-right: 16px !important; }
+        }
+
+        /* 5. Reduce section vertical padding on mobile */
+        @media (max-width: 767px) {
+            section { padding-top: 40px !important; padding-bottom: 40px !important; }
+            section .text-center.mb-8 { margin-bottom: 20px !important; }
+            section .text-center.mb-16 { margin-bottom: 24px !important; }
+        }
+
+        /* 6. Batch coding: better aspect ratio + hide thumbnail grid on mobile */
+        @media (max-width: 639px) {
+            .batch-thumb-grid { display: none; }
+            .rounded-2xl img { aspect-ratio: 4/3 !important; }
+        }
+
+        /* 7. Marquee: prevent text overflow on small screens */
+        @media (max-width: 479px) {
+            .marquee-track .flex span { font-size: 0.65rem !important; }
+            .marquee-track .flex { gap: 16px !important; }
+        }
+
+        /* 8. Why choose section: reduce feature grid gap */
+        @media (max-width: 639px) {
+            .feature-grid { gap: 10px !important; }
+            .feature-grid > div { padding: 14px !important; }
+        }
+
+        /* 9. Testimonials: fix double-width card on mobile */
+        @media (max-width: 639px) {
+            .testimonial-card.sm\:col-span-2 { grid-column: span 1 !important; }
+        }
+
+        /* 10. Footer newsletter — force stack on mobile */
+        @media (max-width: 767px) {
+            .newsletter-row { flex-direction: column !important; gap: 8px !important; }
+            .newsletter-row input { border-radius: 6px !important; }
+            .newsletter-row button { border-radius: 6px !important; padding: 12px !important; }
+        }
+
+        /* 11. About section stat grid — ensure 2 cols */
+        @media (max-width: 767px) {
+            .stat-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+
+        /* 12. Mobile menu — ensure white background */
+        @media (max-width: 767px) {
+            #mobile-menu.open { background: white; z-index: 60; }
+        }
     </style>
 </head>
 <body>
