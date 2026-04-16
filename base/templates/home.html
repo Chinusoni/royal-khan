@@ -612,299 +612,229 @@
         </div>
     </section>
 
-    <section id="products" class="py-16 md:py-24 px-4 md:px-6 bg-rkBgSoft relative">
+    <section id="products" class="py-14 md:py-24 px-4 md:px-6 bg-rkBgSoft relative">
         <div class="absolute inset-0 grid-pattern opacity-40 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto relative z-10">
-            <div class="text-center mb-10 md:mb-12">
+            <div class="text-center mb-8 md:mb-12">
                 <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Our Catalogue</p>
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">PRODUCT RANGE</h2>
                 <div class="blue-rule w-32 mx-auto mt-4 mb-6 md:mb-8"></div>
-                <div class="flex overflow-x-auto pb-1 justify-start md:justify-center gap-4 md:gap-6 text-sm font-body -mx-4 px-4 md:mx-0 md:px-0">
-                    <button class="cat-tab active pb-2 text-rkBlue whitespace-nowrap" onclick="filterCat(this,'all')">All Products</button>
-                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap" onclick="filterCat(this,'band')">Band Sealers</button>
-                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap" onclick="filterCat(this,'cap')">Cap Sealing</button>
-                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap" onclick="filterCat(this,'fill')">Filling Machines</button>
+                <div class="cat-tabs-scroll flex pb-1 justify-start md:justify-center gap-4 md:gap-6 text-sm font-body -mx-4 px-4 md:mx-0 md:px-0">
+                    <button class="cat-tab active pb-2 text-rkBlue whitespace-nowrap min-h-[44px] flex items-end" onclick="filterCat(this,'all')">All Products</button>
+                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap min-h-[44px] flex items-end" onclick="filterCat(this,'band')">Band Sealers</button>
+                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap min-h-[44px] flex items-end" onclick="filterCat(this,'cap')">Cap Sealing</button>
+                    <button class="cat-tab pb-2 text-rkTextLight hover:text-rkBlue transition-colors whitespace-nowrap min-h-[44px] flex items-end" onclick="filterCat(this,'fill')">Filling Machines</button>
                 </div>
             </div>
 
-            <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="band">
-                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
-                        <img src="{% static 'images/1.jpg' %}" alt="Economy Band Sealer" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm">Band Sealer</span>
-                    </div>
-                    <div class="p-4 md:p-5 flex flex-col flex-grow">
-                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">ECONOMY IRON BODY BAND SEALER</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Ideal for small-scale operations. Iron body construction with adjustable temperature and speed.</p>
-                        <div class="flex flex-wrap gap-1.5 mt-3">
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">5–10mm Seal</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">0–300°C</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Single Phase</span>
-                        </div>
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-                             <div>
-                                <p class="text-xl md:text-2xl font-display text-rkBlue">Contact Us For Best Price</p>
-                                <p class="text-[10px] text-rkTextLight"></p>
-                            </div>
-                            
-                            <a href="https://wa.me/919958131152?text=Economy Band Sealer " class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
-                        </div>
-                    </div>
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col relative hover:shadow-md transition-shadow" data-cat="band">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
+            <img src="{% static 'images/1.jpg' %}" alt="Economy Band Sealer" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
+            <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm z-0">Band Sealer</span>
+        </div>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">ECONOMY IRON BODY BAND SEALER</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Ideal for small-scale operations. Iron body construction with adjustable temperature and speed.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">5–10mm Seal</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">0–300°C</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Single Phase</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
+                 <div>
+                    <p class="text-xl md:text-2xl font-display text-rkBlue">Contact Us</p>
                 </div>
-
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="band">
-                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
-                        <img src="{% static 'images/2.jpg' %}" alt="Standard Band Sealer" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm">Band Sealer</span>
-                    </div>
-                    <div class="p-4 md:p-5 flex flex-col flex-grow">
-                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">STANDARD BAND SEALER MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Mid-range performer for medium-production lines with upgraded motor assembly.</p>
-                        <div class="flex flex-wrap gap-1.5 mt-3">
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">5–10mm Seal</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">0–300°C</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">High Speed</span>
-                        </div>
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-
-                             <div>
-                                <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
-                                <p class="text-[10px] text-rkTextLight"></p>
-                            </div>
-                           
-                            <a href="https://wa.me/919958131152?text=Standard Band Sealer " class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="cap">
-                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
-                        <img src="{% static 'images/3.jpg' %}" alt="Cap Sealing Machine" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm">Cap Sealing</span>
-                    </div>
-                    <div class="p-4 md:p-5 flex flex-col flex-grow">
-                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">HEAVY DUTY CAN SEALING MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Electromagnetic induction technology for tamper-proof seals without contact.</p>
-                        <div class="flex flex-wrap gap-1.5 mt-3">
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Induction Type</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">All Cap Sizes</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Tamper-Proof</span>
-                        </div>
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <div>
-                                <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
-                                <p class="text-[10px] text-rkTextLight"></p>
-                            </div>
-                            <a href="https://wa.me/919958131152?text=Cap Sealing Machine ₹25000" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/20 shadow-md flex flex-col relative" data-cat="band">
-                    <div class="absolute top-0 right-0 bg-rkBlue text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide z-10 shadow-sm">Most Popular</div>
-                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
-                        <img src="{% static 'images/sh1.jpg' %}" alt="Premium SS Band Sealer" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-                        <span class="absolute bottom-3 left-3 text-xs bg-rkBlue/90 backdrop-blur text-white px-2 py-0.5 rounded-full font-bold shadow-sm">★ Premium</span>
-                    </div>
-                    <div class="p-4 md:p-5 flex flex-col flex-grow border-t-2 border-rkBlue">
-                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">PREMIUM SS BAND SEALER</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Flagship model — full SS-304 stainless steel body with advanced heat control and embossing attachment.</p>
-                        <div class="flex flex-wrap gap-1.5 mt-3">
-                            <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">SS-304 Body</span>
-                            <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">650W</span>
-                            <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">Embossing</span>
-                        </div>
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <div>
-                                <p class="text-xl md:text-2xl font-display text-rkBlue">Hurry Up For the Best price</p>
-                                <p class="text-[10px] text-rkTextLight"></p>
-                            </div>
-                            <a href="https://wa.me/919958131152?text=Premium SS Band Sealer " class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="fill">
-                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
-                        
-                        <img src="{% static 'images/4.jpg' %}" alt="Premium SS Band Sealer" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-4 md:p-5 flex flex-col flex-grow">
-                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">SEMI-AUTO LIQUID FILLING MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Adjustable fill volume from 50ml to 1000ml with foot-pedal operation.</p>
-                        <div class="flex flex-wrap gap-1.5 mt-3">
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">50–1000ml</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Piston Type</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Foot Pedal</span>
-                        </div>
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <div>
-                                <p class="text-base md:text-lg font-display text-rkBlue mt-1">On Request</p>
-                                <p class="text-[10px] text-rkTextLight">Call for pricing</p>
-                            </div>
-                            <a href="https://wa.me/919958131152?text=Liquid Filling Machine inquiry" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Enquire</span></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="fill">
-    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
-        <div class="text-center text-slate-500">
-             <img src="{% static 'images/5.jpg' %}" alt="Premium SS Band Sealer" class="w-full h-full object-cover">
-            <div class="text-4xl mb-2">🧃</div>
-            <p class="text-sm font-body">Juice Filling Machine</p>
+                <a href="https://wa.me/919958131152?text=Economy Band Sealer" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
+            </div>
         </div>
     </div>
-    <div class="p-4 md:p-5 flex flex-col flex-grow">
-        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">JUICE & LIQUID FILLING MACHINE</h3>
-        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">High-precision liquid filling machine perfect for juices, water, and beverages. Features a food-grade anti-drip stainless steel nozzle.</p>
-        <div class="flex flex-wrap gap-1.5 mt-3">
-            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Food Grade SS</span>
-            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Anti-Drip Nozzle</span>
-            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Beverages</span>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col relative hover:shadow-md transition-shadow" data-cat="band">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
+            <img src="{% static 'images/2.jpg' %}" alt="Standard Band Sealer" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
+            <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm z-0">Band Sealer</span>
         </div>
-        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-            <div>
-                <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
-                <p class="text-[10px] text-rkTextLight"></p>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">STANDARD BAND SEALER MACHINE</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Mid-range performer for medium-production lines with upgraded motor assembly.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">5–10mm Seal</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">0–300°C</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">High Speed</span>
             </div>
-            <a href="https://wa.me/919958131152?text=I am interested in the Juice and Liquid Filling Machine" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
+                 <div>
+                    <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
+                </div>
+                <a href="https://wa.me/919958131152?text=Standard Band Sealer" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
+            </div>
         </div>
     </div>
-</div>
 
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="cap">
-                    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
-                      
-                        <img src="{% static 'images/7.jpg' %}" alt="Premium SS Band Sealer" class="w-full h-full object-cover">
-            
-                    </div>
-                    <div class="p-4 md:p-5 flex flex-col flex-grow">
-                        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">ROTARY CAP SEALING MACHINE</h3>
-                        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">High-speed ROPP capping for mineral water, juice, and pharmaceutical bottles.</p>
-                        <div class="flex flex-wrap gap-1.5 mt-3">
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">ROPP Type</span>
-                            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">High Speed</span>
-                        </div>
-                        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <div>
-                                <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
-                                <p class="text-[10px] text-rkTextLight"></p>
-                            </div>
-                            <a href="https://wa.me/919958131152?text=Rotary Cap Sealer " class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col" data-cat="fill">
-    <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center">
-        <img src="{% static 'images/8.jpg' %}" alt="Premium SS Band Sealer" class="w-full h-full object-cover">
-        <div class="text-center text-slate-500">
-            
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col relative hover:shadow-md transition-shadow" data-cat="cap">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
+            <img src="{% static 'images/3.jpg' %}" alt="Cap Sealing Machine" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
+            <span class="absolute bottom-3 left-3 text-xs bg-white/90 backdrop-blur border border-slate-200 text-rkTextDark px-2 py-0.5 rounded-full font-medium shadow-sm z-0">Cap Sealing</span>
         </div>
-    </div>
-    <div class="p-4 md:p-5 flex flex-col flex-grow">
-        <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">POUCH JUICE FILLING MACHINE</h3>
-        <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Specialized liquid filler designed specifically for stand-up spout pouches. Perfect for juices, purees, and beverages with precision anti-drip nozzles.</p>
-        <div class="flex flex-wrap gap-1.5 mt-3">
-            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Spout Pouches</span>
-            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Anti-Drip Nozzle</span>
-            <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Food Grade SS</span>
-        </div>
-        <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center">
-            <div>
-                <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
-                <p class="text-[10px] text-rkTextLight"></p>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">HEAVY DUTY CAN SEALING MACHINE</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Electromagnetic induction technology for tamper-proof seals without contact.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Induction Type</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">All Cap Sizes</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Tamper-Proof</span>
             </div>
-            <a href="https://wa.me/919958131152?text=I am interested in the Spout Pouch Juice Filling Machine" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
-        </div>
-    </div>
-</div>
-
-                <div class="product-card border-2 border-dashed border-rkBlue/30 bg-white rounded-xl flex flex-col items-center justify-center text-center p-6 md:p-8 min-h-[260px] hover:bg-blue-50 transition-all cursor-pointer shadow-sm">
-                    <div class="text-3xl md:text-4xl mb-3">📦</div>
-                    <h3 class="text-lg md:text-xl font-display text-rkBlue mb-2">25+ MORE PRODUCTS</h3>
-                    <p class="text-rkTextLight text-sm font-body mb-5">Explore shrink tunnels, vacuum sealers, date coders, and more.</p>
-                    <a href="{% url 'all_products' %}" class="btn-outline px-5 py-2.5 rounded text-sm font-body uppercase tracking-wider bg-white">View Full Catalogue →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="process" class="py-16 md:py-24 px-4 md:px-6 bg-rkWhite text-rkTextDark">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-10 md:mb-16">
-                <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Simple Process</p>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">HOW TO ORDER</h2>
-                <div class="blue-rule w-32 mx-auto mt-4"></div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-                <div class="process-step">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4">01</div>
-                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">CONTACT US</h3>
-                    <p class="text-rkTextLight text-xs md:text-sm font-body">Reach out via WhatsApp, phone, or email with your requirements.</p>
-                </div>
-                <div class="process-step">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4">02</div>
-                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">GET A QUOTE</h3>
-                    <p class="text-rkTextLight text-xs md:text-sm font-body">We respond within 2 hours with a detailed GST quotation.</p>
-                </div>
-                <div class="process-step">
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue/10 border-2 border-rkBlue text-rkBlue font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4">03</div>
-                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">CONFIRM ORDER</h3>
-                    <p class="text-rkTextLight text-xs md:text-sm font-body">Pay via bank transfer, UPI, or cheque. GST invoice issued.</p>
-                </div>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
                 <div>
-                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-rkBlue text-white font-display text-xl md:text-2xl flex items-center justify-center mx-auto mb-4 shadow-md">04</div>
-                    <h3 class="text-lg md:text-xl font-display text-rkTextDark mb-2">RECEIVE & RUN</h3>
-                    <p class="text-rkTextLight text-xs md:text-sm font-body">Free video-call training to get your production line running.</p>
+                    <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
                 </div>
+                <a href="https://wa.me/919958131152?text=Cap Sealing Machine" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="py-16 md:py-24 px-4 md:px-6 bg-rkBgSoft">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-10 md:mb-16">
-                <p class="text-rkBlue text-xs tracking-[0.3em] uppercase font-semibold mb-3">Sector Coverage</p>
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-display text-rkTextDark">INDUSTRIES WE SERVE</h2>
-                <div class="blue-rule w-32 mx-auto mt-4"></div>
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/20 shadow-md flex flex-col relative hover:shadow-lg transition-shadow" data-cat="band">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="absolute top-0 right-0 bg-rkBlue text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide z-0 shadow-sm pointer-events-none">Most Popular</div>
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 relative">
+            <img src="{% static 'images/sh1.jpg' %}" alt="Premium SS Band Sealer" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent pointer-events-none"></div>
+            <span class="absolute bottom-3 left-3 text-xs bg-rkBlue/90 backdrop-blur text-white px-2 py-0.5 rounded-full font-bold shadow-sm z-0">★ Premium</span>
+        </div>
+        <div class="p-4 md:p-5 flex flex-col flex-grow border-t-2 border-rkBlue">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">PREMIUM SS BAND SEALER</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Flagship model — full SS-304 stainless steel body with advanced heat control and embossing attachment.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">SS-304 Body</span>
+                <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">650W</span>
+                <span class="text-[10px] border border-rkBlue/30 bg-blue-50 text-rkBlue px-2 py-0.5 rounded font-medium">Embossing</span>
             </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
-                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-3xl md:text-4xl mb-2">🥛</div>
-                    <h4 class="font-display text-rkTextDark text-base md:text-lg">DAIRY</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Milk pouches, curd tubs, paneer packing</p>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
+                <div>
+                    <p class="text-xl md:text-2xl font-display text-rkBlue">Hurry Up For Best price</p>
                 </div>
-                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-3xl md:text-4xl mb-2">🍔</div>
-                    <h4 class="font-display text-rkTextDark text-base md:text-lg">FOOD & BEV</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Snacks, spices, sauces, juices</p>
-                </div>
-                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-3xl md:text-4xl mb-2">💊</div>
-                    <h4 class="font-display text-rkTextDark text-base md:text-lg">PHARMA</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Tablets, capsules, strip packing</p>
-                </div>
-                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default">
-                    <div class="text-3xl md:text-4xl mb-2">💄</div>
-                    <h4 class="font-display text-rkTextDark text-base md:text-lg">COSMETICS</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Creams, lotions, beauty products</p>
-                </div>
-                <div class="group p-4 md:p-6 rounded-xl border border-rkBlue/15 hover:border-rkBlue/50 bg-white hover:bg-blue-50 transition-all text-center shadow-sm cursor-default col-span-2 sm:col-span-1">
-                    <div class="text-3xl md:text-4xl mb-2">🧪</div>
-                    <h4 class="font-display text-rkTextDark text-base md:text-lg">CHEMICAL</h4>
-                    <p class="text-rkTextLight text-xs mt-1 font-body hidden sm:block">Fertilisers, agro-chemicals, adhesives</p>
-                </div>
+                <a href="https://wa.me/919958131152?text=Premium SS Band Sealer" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
             </div>
         </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col relative hover:shadow-md transition-shadow" data-cat="fill">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center relative">
+            <img src="{% static 'images/4.jpg' %}" alt="Semi-Auto Liquid Filling" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">SEMI-AUTO LIQUID FILLING MACHINE</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Adjustable fill volume from 50ml to 1000ml with foot-pedal operation.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">50–1000ml</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Piston Type</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Foot Pedal</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
+                <div>
+                    <p class="text-base md:text-lg font-display text-rkBlue mt-1">On Request</p>
+                </div>
+                <a href="https://wa.me/919958131152?text=Liquid Filling Machine inquiry" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Enquire</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col relative hover:shadow-md transition-shadow" data-cat="fill">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center relative">
+            <img src="{% static 'images/5.jpg' %}" alt="Juice Filling Machine" class="absolute inset-0 w-full h-full object-cover">
+            <div class="text-center text-slate-500 relative z-0 bg-white/80 p-2 rounded backdrop-blur-sm pointer-events-none">
+                <div class="text-4xl mb-1">🧃</div>
+                <p class="text-xs font-bold text-rkTextDark uppercase tracking-widest">Juice Filler</p>
+            </div>
+        </div>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">JUICE & LIQUID FILLING MACHINE</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">High-precision liquid filling machine perfect for juices, water, and beverages. Features a food-grade anti-drip stainless steel nozzle.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Food Grade SS</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Anti-Drip Nozzle</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Beverages</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
+                <div>
+                    <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
+                </div>
+                <a href="https://wa.me/919958131152?text=Juice Filling Machine" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col relative hover:shadow-md transition-shadow" data-cat="cap">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center relative">
+            <img src="{% static 'images/7.jpg' %}" alt="Rotary Cap Sealing" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">ROTARY CAP SEALING MACHINE</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">High-speed ROPP capping for mineral water, juice, and pharmaceutical bottles.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">ROPP Type</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">High Speed</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
+                <div>
+                    <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
+                </div>
+                <a href="https://wa.me/919958131152?text=Rotary Cap Sealer" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card bg-white rounded-xl overflow-hidden border border-rkBlue/15 shadow-sm flex flex-col relative hover:shadow-md transition-shadow" data-cat="fill">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="card-img h-44 md:h-52 overflow-hidden bg-slate-100 flex items-center justify-center relative">
+            <img src="{% static 'images/8.jpg' %}" alt="Spout Pouch Juice Filler" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4 md:p-5 flex flex-col flex-grow">
+            <h3 class="text-base md:text-lg font-display text-rkTextDark leading-tight">POUCH JUICE FILLING MACHINE</h3>
+            <p class="text-rkTextLight text-xs mt-2 font-body leading-relaxed">Specialized liquid filler designed specifically for stand-up spout pouches. Perfect for juices, purees, and beverages with precision anti-drip nozzles.</p>
+            <div class="flex flex-wrap gap-1.5 mt-3">
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Spout Pouches</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Anti-Drip Nozzle</span>
+                <span class="text-[10px] border border-rkBlue/20 bg-blue-50 text-rkBlue px-2 py-0.5 rounded">Food Grade SS</span>
+            </div>
+            <div class="mt-auto pt-4 border-t border-slate-100 flex justify-between items-center relative z-20">
+                <div>
+                    <p class="text-xl md:text-2xl font-display text-rkBlue">Quote For Best Price</p>
+                </div>
+                <a href="https://wa.me/919958131152?text=Spout Pouch Juice Filling Machine" class="btn-blue text-xs px-3 py-2 rounded min-h-[36px] flex items-center"><span>Quote</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-card border-2 border-dashed border-rkBlue/30 bg-white rounded-xl flex flex-col items-center justify-center text-center p-6 md:p-8 min-h-[260px] hover:bg-blue-50 transition-all cursor-pointer shadow-sm relative">
+        <a href="{% url 'all_products' %}" class="absolute inset-0 z-10" aria-label="View All Products"></a>
+        
+        <div class="text-3xl md:text-4xl mb-3 relative z-0 pointer-events-none">📦</div>
+        <h3 class="text-lg md:text-xl font-display text-rkBlue mb-2 relative z-0 pointer-events-none">25+ MORE PRODUCTS</h3>
+        <p class="text-rkTextLight text-sm font-body mb-5 relative z-0 pointer-events-none">Explore shrink tunnels, vacuum sealers, date coders, and more.</p>
+        <span class="btn-outline px-5 py-2.5 rounded text-sm font-body uppercase tracking-wider bg-white relative z-0 pointer-events-none">View Full Catalogue →</span>
+    </div>
+
+</div>
     </section>
 
     <section class="py-16 md:py-24 px-4 md:px-6 bg-gradient-to-b from-rkWhite to-blue-50">
