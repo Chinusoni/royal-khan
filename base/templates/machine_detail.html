@@ -149,6 +149,66 @@
             {% endif %}
         </div>
 
+        <div id="productImageSlider" class="carousel slide machine-display-box p-0" data-bs-ride="carousel" style="display: block;">
+                <div class="carousel-inner h-100 rounded-4">
+                    
+                    <div class="carousel-item active h-100">
+                        {% if product.image %}
+                            <div class="d-flex align-items-center justify-content-center h-100 p-4">
+                                <img src="{{ product.image.url }}" class="machine-img" alt="{{ product.title }}">
+                            </div>
+                        {% else %}
+                            <div class="d-flex align-items-center justify-content-center h-100 flex-column text-muted py-5">
+                                <i class="fas fa-image fa-4x mb-3" style="opacity: 0.1;"></i>
+                                <p class="font-body text-rkTextLight">No Image Available</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    {% if product.image2 %}
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center h-100 p-4">
+                            <img src="{{ product.image2.url }}" class="machine-img" alt="Image 2">
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if product.image3 %}
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center h-100 p-4">
+                            <img src="{{ product.image3.url }}" class="machine-img" alt="Image 3">
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if product.image4 %}
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center h-100 p-4">
+                            <img src="{{ product.image4.url }}" class="machine-img" alt="Image 4">
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% for img in product.images.all %}
+                    <div class="carousel-item h-100">
+                        <div class="d-flex align-items-center justify-content-center h-100 p-4">
+                            <img src="{{ img.image.url }}" class="machine-img" alt="Gallery Image">
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#productImageSlider" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true" style="opacity: 0.6;"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#productImageSlider" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true" style="opacity: 0.6;"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
         <div class="col-lg-6">
             <div class="bg-white p-4 p-md-5 h-100" style="border-radius: 1rem; border: 1px solid rgba(2, 132, 199, 0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
                 
@@ -214,4 +274,26 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Find all iframes on the page
+        var iframes = document.querySelectorAll('iframe');
+        
+        iframes.forEach(function(iframe) {
+            // FIX FOR ERROR 153: Tell YouTube it is safe to play on this domain
+            iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+            
+            var url = iframe.src;
+            
+            // This magical formula finds the 11-character Video ID from ANY type of YouTube link
+            var match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})/);
+            
+            // If it finds a YouTube video ID, swap the broken link with a working embed link
+            if (match && match[1]) {
+                var videoId = match[1];
+                iframe.src = "https://www.youtube.com/embed/" + videoId;
+            }
+        });
+    });
+</script>
 {% endblock %}
