@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}{{ product.title }} | Royal Khan Packaging Machines{% endblock %}
+{% block meta_description %}Buy the {{ product.title }}. {{ product.description|truncatewords:20 }} Get the best price and 1-year warranty.{% endblock %}
 
 {% block content %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -285,5 +287,24 @@
             }
         });
     });
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "{{ product.title }}",
+  "image": "{{ product.image.url }}",
+  "description": "{{ product.description|truncatewords:30 }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Royal Khan Company"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "INR",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ request.build_absolute_uri }}"
+  }
+}
 </script>
 {% endblock %}
